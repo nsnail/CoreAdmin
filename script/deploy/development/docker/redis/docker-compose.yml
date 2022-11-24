@@ -1,0 +1,19 @@
+version: "3"
+services:
+  redis:
+    restart: always
+    image: redis:latest
+    container_name: core-admin-redis
+    ports:
+      - "6379:6379"
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - /etc/timezone:/etc/timezone
+    networks:
+      core-admin-net:
+networks:
+  core-admin-net:
+    external:
+      name: core-admin-net

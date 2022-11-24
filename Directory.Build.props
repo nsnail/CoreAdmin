@@ -1,0 +1,7 @@
+<Project>
+	<PropertyGroup>
+		<BaseOutputPath>../../../build/backend/CoreAdmin/bin</BaseOutputPath>
+		<BaseIntermediateOutputPath>../../../build/backend/CoreAdmin/obj</BaseIntermediateOutputPath>
+		<MSBuildProjectExtensionsPath>../../../build/backend/CoreAdmin/obj</MSBuildProjectExtensionsPath>
+	</PropertyGroup>
+</Project>

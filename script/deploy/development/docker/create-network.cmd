@@ -1,0 +1,1 @@
+docker network create core-admin-net
