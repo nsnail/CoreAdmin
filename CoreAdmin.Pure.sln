@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{613B096C-0218-4A31-9001-4B228DDD01E7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{4C7ED650-C67E-403D-8C3C-FABCDC435DE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreAdmin", "src\backend\CoreAdmin\CoreAdmin.csproj", "{9B05D4C1-A98E-4CC7-B025-7C64F43453C6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9B05D4C1-A98E-4CC7-B025-7C64F43453C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B05D4C1-A98E-4CC7-B025-7C64F43453C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B05D4C1-A98E-4CC7-B025-7C64F43453C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B05D4C1-A98E-4CC7-B025-7C64F43453C6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4C7ED650-C67E-403D-8C3C-FABCDC435DE5} = {613B096C-0218-4A31-9001-4B228DDD01E7}
+		{9B05D4C1-A98E-4CC7-B025-7C64F43453C6} = {4C7ED650-C67E-403D-8C3C-FABCDC435DE5}
+	EndGlobalSection
+EndGlobal
