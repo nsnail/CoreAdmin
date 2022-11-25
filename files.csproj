@@ -5,6 +5,8 @@
 
   <ItemGroup>
     <Compile Remove="*/**" />
-    <None Remove="src/**"/>
+    <None Remove="src/backend/**" />
+    <None Remove="src/frontend/swagger-ui/node_modules/**" />
+    <None Remove="src/frontend/admin-ui/node_modules/**" />
   </ItemGroup>
 </Project>

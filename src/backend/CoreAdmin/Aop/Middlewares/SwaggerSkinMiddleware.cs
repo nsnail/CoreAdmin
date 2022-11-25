@@ -14,8 +14,7 @@ namespace CoreAdmin.Aop.Middlewares;
 /// </summary>
 public class SwaggerSkinMiddleware
 {
-    // CoreAdmin.WebApi..res.swagger_ui.favicon.ico
-    private const string EMBEDDED_FILE_NAMESPACE = $"{nameof(CoreAdmin)}..res.swagger_ui";
+    private const string EMBEDDED_FILE_NAMESPACE = $"{nameof(CoreAdmin)}..data.swagger_ui";
 
     private const string INDEX_FILE_NAME = "index.html";
 

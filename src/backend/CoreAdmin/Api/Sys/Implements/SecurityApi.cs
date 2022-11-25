@@ -43,7 +43,7 @@ public class SecurityApi : ApiBase<ISecurityApi>, ISecurityApi, IScoped
     [AllowAnonymous]
     public async Task<GetCaptchaRsp> GetCaptchaImage()
     {
-        var baseDir = $@"{AppContext.BaseDirectory}/.res/captcha";
+        var baseDir = $@"{AppContext.BaseDirectory}/.data/captcha";
 
 
         var captchaImage =

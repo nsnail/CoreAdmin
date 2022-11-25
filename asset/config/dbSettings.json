@@ -4,6 +4,6 @@
     "DbCreationFile": null,
     "DbType": "Sqlite",
     "IsSyncStructure": true,
-    "ConnStr": "Data Source=|DataDirectory|\\.res\\core-admin.db; Pooling=true;Min Pool Size=1"
+    "ConnStr": "Data Source=|DataDirectory|\\.data\\core-admin.db; Pooling=true;Min Pool Size=1"
   }
 }

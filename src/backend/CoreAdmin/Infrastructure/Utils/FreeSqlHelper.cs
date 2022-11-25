@@ -130,7 +130,7 @@ public class FreeSqlHelper
     private static void InitSeedData(IFreeSql freeSql, IEnumerable<Type> entityTypes)
     {
         foreach (var entityType in entityTypes) {
-            var path = $"{AppContext.BaseDirectory}/.res/seed-data/{entityType.Name}.json";
+            var path = $"{AppContext.BaseDirectory}/.data/seed-data/{entityType.Name}.json";
             if (!File.Exists(path)) continue;
             dynamic entities = File.ReadAllText(path)
                                    .Object(typeof(List<>).MakeGenericType(entityType),
