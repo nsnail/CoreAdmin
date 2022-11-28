@@ -1,4 +1,4 @@
-﻿using CoreAdmin.Aop.Attribute;
+using CoreAdmin.Aop.Attribute;
 using CoreAdmin.DataContract.DbMap;
 using CoreAdmin.DataContract.Dto.Sys.Security;
 using CoreAdmin.Infrastructure.Configuration.Options;

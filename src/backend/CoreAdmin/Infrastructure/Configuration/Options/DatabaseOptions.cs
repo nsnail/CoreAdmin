@@ -1,4 +1,4 @@
-﻿using DataType = FreeSql.DataType;
+using DataType = FreeSql.DataType;
 
 namespace CoreAdmin.Infrastructure.Configuration.Options;
 

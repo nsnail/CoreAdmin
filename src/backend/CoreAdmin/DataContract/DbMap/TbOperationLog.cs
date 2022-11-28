@@ -1,4 +1,4 @@
-﻿using CoreAdmin.DataContract.DbMap.Dependency;
+using CoreAdmin.DataContract.DbMap.Dependency;
 
 namespace CoreAdmin.DataContract.DbMap;
 

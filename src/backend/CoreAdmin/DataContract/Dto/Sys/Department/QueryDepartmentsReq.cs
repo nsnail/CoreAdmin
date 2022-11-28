@@ -1,4 +1,4 @@
-﻿using CoreAdmin.DataContract.DbMap;
+using CoreAdmin.DataContract.DbMap;
 
 namespace CoreAdmin.DataContract.Dto.Sys.Department;
 

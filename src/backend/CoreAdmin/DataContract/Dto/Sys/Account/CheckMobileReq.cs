@@ -1,4 +1,4 @@
-﻿using CoreAdmin.Aop.Attribute;
+using CoreAdmin.Aop.Attribute;
 using CoreAdmin.Infrastructure.Constant;
 
 namespace CoreAdmin.DataContract.Dto.Sys.Account;

@@ -1,4 +1,4 @@
-﻿using Furion.ConfigurableOptions;
+using Furion.ConfigurableOptions;
 
 namespace CoreAdmin.Infrastructure.Configuration;
 

@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using CoreAdmin.Infrastructure.Constant;
 using Serilog;
 using Serilog.Events;

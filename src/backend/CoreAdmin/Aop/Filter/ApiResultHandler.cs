@@ -1,4 +1,4 @@
-﻿using CoreAdmin.DataContract.Dto;
+using CoreAdmin.DataContract.Dto;
 using CoreAdmin.Infrastructure.Constant;
 using Furion.DataValidation;
 using Furion.FriendlyException;

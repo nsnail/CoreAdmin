@@ -1,4 +1,4 @@
-﻿using CoreAdmin.Infrastructure.Configuration.Options.Nodes.SwaggerSkin;
+using CoreAdmin.Infrastructure.Configuration.Options.Nodes.SwaggerSkin;
 
 namespace CoreAdmin.Infrastructure.Configuration.Options;
 

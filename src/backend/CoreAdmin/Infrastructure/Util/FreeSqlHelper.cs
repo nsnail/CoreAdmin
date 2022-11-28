@@ -1,4 +1,4 @@
-﻿using System.Data.Common;
+using System.Data.Common;
 using System.Reflection;
 using CoreAdmin.Aop.Attribute;
 using CoreAdmin.Infrastructure.Configuration.Options;

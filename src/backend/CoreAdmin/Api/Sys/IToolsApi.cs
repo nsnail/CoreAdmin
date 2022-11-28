@@ -1,4 +1,4 @@
-﻿namespace CoreAdmin.Api.Sys;
+namespace CoreAdmin.Api.Sys;
 
 /// <summary>
 ///     工具接口

@@ -1,4 +1,4 @@
-﻿using CoreAdmin.DataContract.Dto;
+using CoreAdmin.DataContract.Dto;
 using CoreAdmin.DataContract.Dto.Sys.Department;
 
 namespace CoreAdmin.Api.Sys;

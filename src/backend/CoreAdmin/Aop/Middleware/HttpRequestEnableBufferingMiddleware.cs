@@ -1,4 +1,4 @@
-﻿namespace CoreAdmin.Aop.Middleware;
+namespace CoreAdmin.Aop.Middleware;
 
 /// <summary>
 ///     确保AspNetCore Http请求 主体可以被多次读取。

@@ -1,4 +1,4 @@
-﻿using System.Data.Common;
+using System.Data.Common;
 using NSExt.Extensions;
 
 namespace CoreAdmin.Infrastructure.Extension;

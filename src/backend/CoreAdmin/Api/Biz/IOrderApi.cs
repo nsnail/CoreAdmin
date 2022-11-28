@@ -1,4 +1,4 @@
-﻿namespace CoreAdmin.Api.Biz;
+namespace CoreAdmin.Api.Biz;
 
 /// <summary>
 ///     订单接口

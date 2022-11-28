@@ -1,4 +1,4 @@
-﻿using FreeSql.Internal.Model;
+using FreeSql.Internal.Model;
 
 namespace CoreAdmin.DataContract.Dto;
 

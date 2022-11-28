@@ -1,4 +1,4 @@
-﻿namespace CoreAdmin.DataContract.Dto;
+namespace CoreAdmin.DataContract.Dto;
 
 /// <summary>
 ///     分页列表响应

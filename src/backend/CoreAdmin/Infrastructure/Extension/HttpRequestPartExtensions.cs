@@ -1,4 +1,4 @@
-﻿using Furion.RemoteRequest;
+using Furion.RemoteRequest;
 
 namespace CoreAdmin.Infrastructure.Extension;
 

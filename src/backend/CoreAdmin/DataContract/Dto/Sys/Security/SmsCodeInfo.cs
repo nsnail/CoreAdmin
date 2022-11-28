@@ -1,4 +1,4 @@
-﻿using CoreAdmin.DataContract.Dto.Sys.Account;
+using CoreAdmin.DataContract.Dto.Sys.Account;
 
 namespace CoreAdmin.DataContract.Dto.Sys.Security;
 

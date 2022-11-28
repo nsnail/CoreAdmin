@@ -1,4 +1,4 @@
-﻿using CoreAdmin.Aop.Middleware;
+using CoreAdmin.Aop.Middleware;
 
 namespace CoreAdmin.Infrastructure.Extension;
 

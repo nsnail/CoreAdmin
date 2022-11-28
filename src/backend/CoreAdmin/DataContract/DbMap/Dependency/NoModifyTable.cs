@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using CoreAdmin.Aop.Attribute;
 using CoreAdmin.Infrastructure.Constant;
 using FreeSql.DataAnnotations;

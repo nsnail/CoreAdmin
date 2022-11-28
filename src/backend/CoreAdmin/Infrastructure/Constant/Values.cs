@@ -1,4 +1,4 @@
-﻿namespace CoreAdmin.Infrastructure.Constant;
+namespace CoreAdmin.Infrastructure.Constant;
 
 /// <summary>
 ///     值类型常量表（public类型会通过接口暴露给前端）

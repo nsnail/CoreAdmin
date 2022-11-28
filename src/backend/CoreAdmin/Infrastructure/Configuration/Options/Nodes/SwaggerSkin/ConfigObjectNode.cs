@@ -1,4 +1,4 @@
-﻿namespace CoreAdmin.Infrastructure.Configuration.Options.Nodes.SwaggerSkin;
+namespace CoreAdmin.Infrastructure.Configuration.Options.Nodes.SwaggerSkin;
 
 /// <summary>
 ///     swagger 配置对象 节点

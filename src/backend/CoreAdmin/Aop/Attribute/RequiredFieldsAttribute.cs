@@ -1,4 +1,4 @@
-﻿namespace CoreAdmin.Aop.Attribute;
+namespace CoreAdmin.Aop.Attribute;
 
 /// <summary>
 ///     必填项约束

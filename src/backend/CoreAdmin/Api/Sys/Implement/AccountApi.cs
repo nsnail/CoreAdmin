@@ -1,4 +1,4 @@
-﻿using CoreAdmin.DataContract;
+using CoreAdmin.DataContract;
 using CoreAdmin.DataContract.DbMap;
 using CoreAdmin.DataContract.Dto.Sys.Account;
 using CoreAdmin.Infrastructure.Constant;

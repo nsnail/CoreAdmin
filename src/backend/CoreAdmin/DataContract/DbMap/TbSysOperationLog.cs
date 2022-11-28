@@ -1,4 +1,4 @@
-﻿using CoreAdmin.DataContract.DbMap.Dependency;
+using CoreAdmin.DataContract.DbMap.Dependency;
 using FreeSql.DataAnnotations;
 
 namespace CoreAdmin.DataContract.DbMap;
