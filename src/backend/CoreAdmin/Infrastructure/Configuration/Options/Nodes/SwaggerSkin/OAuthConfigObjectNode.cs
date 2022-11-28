@@ -33,7 +33,7 @@ public record OAuthConfigObjectNode
     /// <summary>
     ///     String array of initially selected oauth scopes, default is empty array
     /// </summary>
-    public IEnumerable<string> Scopes { get; set; } = new string[] { };
+    public IEnumerable<string> Scopes { get; set; } = Array.Empty<string>();
 
     /// <summary>
     ///     Scope separator for passing scopes, encoded before calling, default value is a space (encoded value %20)

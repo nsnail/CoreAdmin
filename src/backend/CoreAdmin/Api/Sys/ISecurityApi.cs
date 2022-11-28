@@ -1,5 +1,5 @@
-﻿using CoreAdmin.DataContracts.Dto.Security;
-using CoreAdmin.Infrastructure.Utils;
+﻿using CoreAdmin.DataContract.Dto.Sys.Security;
+using CoreAdmin.Infrastructure.Util;
 
 namespace CoreAdmin.Api.Sys;
 

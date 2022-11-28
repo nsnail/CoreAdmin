@@ -1,5 +1,5 @@
-﻿using CoreAdmin.DataContracts.Dto;
-using CoreAdmin.DataContracts.Dto.User;
+﻿using CoreAdmin.DataContract.Dto;
+using CoreAdmin.DataContract.Dto.Sys.User;
 
 namespace CoreAdmin.Api.Sys;
 

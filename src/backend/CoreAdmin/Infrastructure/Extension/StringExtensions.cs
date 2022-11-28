@@ -1,0 +1,22 @@
+﻿using System.Text.RegularExpressions;
+
+namespace CoreAdmin.Infrastructure.Extension;
+
+/// <summary>
+///     String  扩展方法
+/// </summary>
+public static partial class StringExtensions
+{
+    [GeneratedRegex("Options$")]
+    private static partial Regex OptionsRegex();
+
+    /// <summary>
+    ///     去掉尾部字符串“Options”
+    /// </summary>
+    /// <param name="me"></param>
+    /// <returns></returns>
+    public static string TrimEndOptions(this string me)
+    {
+        return OptionsRegex().Replace(me, string.Empty);
+    }
+}

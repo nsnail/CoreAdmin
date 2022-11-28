@@ -28,5 +28,5 @@ public static class Values
     /// <summary>
     ///     sql server中的最小日期值
     /// </summary>
-    public static readonly DateTime SQLSERVER_MIN_DATE = new(1753, 1, 1, 12, 0, 0);
+    public static readonly DateTime SqlserverMinDate = new(1753, 1, 1, 12, 0, 0);
 }

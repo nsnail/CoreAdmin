@@ -5,7 +5,7 @@ module.exports = defineConfig({
 	publicPath:'',
 	//build编译后存放静态文件的目录
 	//assetsDir: "static",
-
+	outputDir: "../../../build/frontend/admin-ui",
 	// build编译后不生成资源MAP文件
 	productionSourceMap: false,
 

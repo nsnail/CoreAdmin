@@ -1,8 +1,7 @@
 // ReSharper disable ContextualLoggerProblem
 
-using CoreAdmin.DataContracts;
-using CoreAdmin.DataContracts.DbMaps.Dependency;
-using CoreAdmin.Repositories;
+using CoreAdmin.DataContract.DbMap.Dependency;
+using CoreAdmin.Repository;
 using Furion.DynamicApiController;
 
 namespace CoreAdmin.Api;
@@ -10,8 +9,14 @@ namespace CoreAdmin.Api;
 /// <summary>
 ///     Api Controller 基类
 /// </summary>
-public abstract class ApiBase<TLogger, TTable> : ApiBase<TLogger> where TTable : DataContract, ITable, new()
+public abstract class ApiBase<TLogger, TTable> : ApiBase<TLogger>
+    where TTable : DataContract.DataContract, ITable, new()
 {
+    /// <summary>
+    ///     默认仓储
+    /// </summary>
+    protected Repository<TTable> Repository { get; }
+
     /// <summary>
     ///     Api Controller 基类
     /// </summary>
@@ -26,12 +31,6 @@ public abstract class ApiBase<TLogger, TTable> : ApiBase<TLogger> where TTable :
     {
         Repository = repository;
     }
-
-
-    /// <summary>
-    ///     默认仓储
-    /// </summary>
-    protected Repository<TTable> Repository { get; }
 }
 
 /// <summary>
@@ -39,6 +38,11 @@ public abstract class ApiBase<TLogger, TTable> : ApiBase<TLogger> where TTable :
 /// </summary>
 public abstract class ApiBase<T> : IDynamicApiController
 {
+    /// <summary>
+    ///     日志记录器
+    /// </summary>
+    protected ILogger<T> Logger { get; }
+
     /// <summary>
     ///     Api Controller 基类
     /// </summary>
@@ -52,9 +56,4 @@ public abstract class ApiBase<T> : IDynamicApiController
     {
         Logger = logger;
     }
-
-    /// <summary>
-    ///     日志记录器
-    /// </summary>
-    protected ILogger<T> Logger { get; }
 }
