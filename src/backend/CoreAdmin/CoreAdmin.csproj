@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-      <DocumentationFile>..\..\..\build\backend\CoreAdmin\bin\Debug\CoreAdmin.xml</DocumentationFile>
+        <DocumentationFile>..\..\..\build\backend\CoreAdmin\bin\Debug\CoreAdmin.xml</DocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -22,9 +22,8 @@
 
 
     <ItemGroup>
-        <PackageReference Include="FreeSql" Version="3.2.684-preview20221124" />
-        <PackageReference Include="freesql.dbcontext.ns" Version="3.2.684-preview20221124-ns1" />
-        <PackageReference Include="FreeSql.Provider.Sqlite" Version="3.2.684-preview20221124" />
+        <PackageReference Include="FreeSql.DbContext.NS" Version="3.2.684-preview20221124-ns2" />
+        <PackageReference Include="FreeSql.Provider.Sqlite.NS" Version="3.2.684-preview20221124-ns2" />
         <PackageReference Include="Furion.Extras.Authentication.JwtBearer" Version="4.8.1.4" />
         <PackageReference Include="Furion.Extras.Logging.Serilog" Version="4.8.1.4" />
         <PackageReference Include="Furion.Extras.ObjectMapper.Mapster" Version="4.8.1.4" />
@@ -38,6 +37,6 @@
 
 
     <ItemGroup>
-      <Folder Include="DataContract\Dto\Sys" />
+        <Folder Include="DataContract\Dto\Sys" />
     </ItemGroup>
 </Project>

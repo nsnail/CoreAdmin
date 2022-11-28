@@ -9,8 +9,8 @@ namespace CoreAdmin.Api.Sys;
 public interface IDepartmentApi
 {
     /// <summary>
-    ///     分页获取部门列表
+    ///     部门列表
     /// </summary>
     /// <returns></returns>
-    Task<List<QueryDepartmentsRsp>> List(PagedListReq<QueryDepartmentsReq> req);
+    Task<List<QueryDepartmentsRsp>> List();
 }

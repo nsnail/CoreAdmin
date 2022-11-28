@@ -17,6 +17,15 @@
     "type": 1,
     "children": [
       {
+        "code": "system-department",
+        "icon": "el-icon-fold",
+        "title": "部门管理",
+        "path": "/system/department",
+        "component": "system/dept",
+        "sort": 0,
+        "type": 1,
+      },
+      {
         "code": "system-user",
         "icon": "el-icon-fold",
         "title": "用户管理",

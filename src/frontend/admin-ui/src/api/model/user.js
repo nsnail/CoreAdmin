@@ -12,7 +12,7 @@ export default {
 	 * 获取个人信息
 	 */
 	getProfile :{
-		url: `${config.API_URL}/user/get-profile`,
+		url: `${config.API_URL}/user/get.profile`,
 		name: `获取个人信息`,
 		get:async function(data) {
 			return await http.get(this.url,data)
@@ -24,7 +24,7 @@ export default {
 	 * 分页获取用户列表
 	 */
 	queryUsers :{
-		url: `${config.API_URL}/user/query-users`,
+		url: `${config.API_URL}/user/query.users`,
 		name: `分页获取用户列表`,
 		post:async function(data) {
 			return await http.post(this.url,data)

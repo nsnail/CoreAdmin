@@ -1,6 +1,5 @@
 ﻿using System.Data.Common;
 using System.Reflection;
-using System.Text.Json;
 using CoreAdmin.Aop.Attribute;
 using CoreAdmin.Infrastructure.Configuration.Options;
 using CoreAdmin.Infrastructure.Extension;
@@ -120,13 +119,10 @@ public class FreeSqlHelper
         foreach (var entityType in entityTypes) {
             var path = $"{AppContext.BaseDirectory}/.data/seed-data/{entityType.Name}.json";
             if (!File.Exists(path)) continue;
-            dynamic entities = File.ReadAllText(path)
-                                   .Object(typeof(List<>).MakeGenericType(entityType)
-                                         , new JsonSerializerOptions {
-                                                                         AllowTrailingCommas = true
-                                                                       , PropertyNamingPolicy
-                                                                             = JsonNamingPolicy.CamelCase
-                                                                     });
+
+
+            #error 这里被表的JsonIgnoreAttribute 挡住了 ， 换成newtonsoft ？
+            dynamic entities = File.ReadAllText(path).Object(typeof(List<>).MakeGenericType(entityType));
 
 
             // 如果表存在数据，跳过

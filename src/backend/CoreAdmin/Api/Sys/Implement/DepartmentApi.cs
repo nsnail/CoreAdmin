@@ -11,7 +11,7 @@ public class DepartmentApi : ApiBase<IDepartmentApi, TbSysDepartment>, IDepartme
 {
     /// <inheritdoc />
     [AllowAnonymous]
-    public async Task<List<QueryDepartmentsRsp>> List(PagedListReq<QueryDepartmentsReq> req)
+    public async Task<List<QueryDepartmentsRsp>> List()
     {
         var ret = (await Repository.Select.ToTreeListAsync()).ConvertAll(x => x.Adapt<QueryDepartmentsRsp>());
         return ret;
