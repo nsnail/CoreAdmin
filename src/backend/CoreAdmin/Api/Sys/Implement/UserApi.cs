@@ -39,7 +39,6 @@ public class UserApi : ApiBase<IUserApi, TbSysUser>, IUserApi
         return ret;
     }
 
-
     /// <inheritdoc />
     [AllowAnonymous]
     [HttpPost]
@@ -49,8 +48,8 @@ public class UserApi : ApiBase<IUserApi, TbSysUser>, IUserApi
         return new PagedListRsp<UserRsp> {
                                              Page     = req.Page
                                            , PageSize = req.PageSize
-                                           , Rows     = ret.list.ConvertAll(x => new UserRsp { UserName = x.UserName })
-                                           , Total    = ret.total
+                                           , Rows     = ret.List.ConvertAll(x => new UserRsp { UserName = x.UserName })
+                                           , Total    = ret.Total
                                          };
     }
 }

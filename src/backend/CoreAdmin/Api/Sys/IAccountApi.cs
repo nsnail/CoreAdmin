@@ -10,8 +10,6 @@ public interface IAccountApi
     /// <summary>
     ///     检查手机号可用性
     /// </summary>
-    /// <param name="req"></param>
-    /// <returns></returns>
     Task<bool> CheckMobile(CheckMobileReq req);
 
     /// <summary>
@@ -23,7 +21,6 @@ public interface IAccountApi
     ///     创建帐号
     /// </summary>
     Task Create(CreateReq req);
-
 
     /// <summary>
     ///     帐号登录

@@ -6,7 +6,10 @@ namespace CoreAdmin.DataContract.DbMap.Dependency;
 public interface IFieldPrimary
 {
     /// <summary>
-    ///     主键Id
+    ///     Gets or sets 主键Id
     /// </summary>
+    /// <value>
+    ///     主键Id
+    /// </value>
     long Id { get; set; }
 }

@@ -10,9 +10,6 @@ public static class HttpResponseMessageExtensions
     /// <summary>
     ///     将Http请求的Uri、Header、Body打包成Json字符串
     /// </summary>
-    /// <param name="me"></param>
-    /// <param name="bodyHandle"></param>
-    /// <returns></returns>
     public static async Task<string> BuildJson(this HttpResponseMessage me, Func<string, string> bodyHandle = null)
     {
         var body = me?.Content is null ? null : await me.Content!.ReadAsStringAsync();
@@ -22,10 +19,9 @@ public static class HttpResponseMessageExtensions
     /// <summary>
     ///     记录日志
     /// </summary>
-    /// <param name="me"></param>
-    /// <param name="logger"></param>
+    /// <param name="me">me</param>
+    /// <param name="logger">logger</param>
     /// <param name="bodyPreHandle">body预处理器</param>
-    /// <typeparam name="T"></typeparam>
     public static async Task Log<T>(this HttpResponseMessage me, ILogger<T> logger
                                   , Func<string, string>     bodyPreHandle = null)
     {
@@ -35,11 +31,6 @@ public static class HttpResponseMessageExtensions
     /// <summary>
     ///     记录日常日志
     /// </summary>
-    /// <param name="me"></param>
-    /// <param name="errors"></param>
-    /// <param name="logger"></param>
-    /// <param name="bodyHandle"></param>
-    /// <typeparam name="T"></typeparam>
     public static async Task LogException<T>(this HttpResponseMessage me, string errors, ILogger<T> logger
                                            , Func<string, string>     bodyHandle = null)
     {

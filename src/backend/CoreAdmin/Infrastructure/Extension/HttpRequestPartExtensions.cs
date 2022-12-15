@@ -10,11 +10,6 @@ public static class HttpRequestPartExtensions
     /// <summary>
     ///     设置日志
     /// </summary>
-    /// <param name="me"></param>
-    /// <param name="logger"></param>
-    /// <param name="bodyHandle"></param>
-    /// <typeparam name="T"></typeparam>
-    /// <returns></returns>
     public static HttpRequestPart SetLog<T>(this HttpRequestPart me, ILogger<T> logger
                                           , Func<string, string> bodyHandle = null)
     {

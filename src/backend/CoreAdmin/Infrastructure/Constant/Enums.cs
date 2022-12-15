@@ -16,22 +16,30 @@ public static class Enums
         /// <summary>
         ///     全部
         /// </summary>
-        All = 1,
+        All = 1
+
+       ,
 
         /// <summary>
         ///     本部门和下级部门
         /// </summary>
-        DeptWithChild = 2,
+        DeptWithChild = 2
+
+       ,
 
         /// <summary>
         ///     本部门
         /// </summary>
-        Dept = 3,
+        Dept = 3
+
+       ,
 
         /// <summary>
         ///     本人数据
         /// </summary>
-        Self = 4,
+        Self = 4
+
+       ,
 
         /// <summary>
         ///     指定部门
@@ -49,31 +57,41 @@ public static class Enums
         ///     未知错误
         /// </summary>
         [ErrorCodeItemMetadata("{0}")] [Description(Strings.MSG_ERROR_UNKNOWN)]
-        Unknown = 4000,
+        Unknown = 4000
+
+       ,
 
         /// <summary>
         ///     无效输入
         /// </summary>
         [ErrorCodeItemMetadata("{0}")] [Description(Strings.MSG_ERROR_INVALID_INPUT)]
-        InvalidInput = 4010,
+        InvalidInput = 4010
+
+       ,
 
         /// <summary>
         ///     无效操作
         /// </summary>
         [ErrorCodeItemMetadata("{0}")] [Description(Strings.MSG_INVALID_OPERATION)]
-        InvalidOperation = 4020,
+        InvalidOperation = 4020
+
+       ,
 
         /// <summary>
         ///     未登录
         /// </summary>
         [ErrorCodeItemMetadata("{0}")] [Description(Strings.MSG_IDENTITY_MISSING)]
-        IdentityMissing = 4030,
+        IdentityMissing = 4030
+
+       ,
 
         /// <summary>
         ///     权限不足
         /// </summary>
         [ErrorCodeItemMetadata("{0}")] [Description(Strings.MSG_NO_PERMISSIONS)]
-        NoPermissions = 4031,
+        NoPermissions = 4031
+
+       ,
 
         /// <summary>
         ///     人机验证
@@ -81,7 +99,6 @@ public static class Enums
         [ErrorCodeItemMetadata("需进行人机验证")] [Description(Strings.MSG_HUMAN_VERIFICATION)]
         HumanVerification = 4040
     }
-
 
     /// <summary>
     ///     FreeSql全局过滤器
@@ -91,17 +108,23 @@ public static class Enums
         /// <summary>
         ///     数据权限
         /// </summary>
-        [Description("数据权限")] Delete,
+        [Description("数据权限")] Delete
+
+       ,
 
         /// <summary>
         ///     删除
         /// </summary>
-        [Description("删除")] Self,
+        [Description("删除")] Self
+
+       ,
 
         /// <summary>
         ///     本人权限
         /// </summary>
-        [Description("本人权限")] Tenant,
+        [Description("本人权限")] Tenant
+
+       ,
 
         /// <summary>
         ///     租户
@@ -117,12 +140,16 @@ public static class Enums
         /// <summary>
         ///     菜单
         /// </summary>
-        [Description("菜单")] Menu = 1,
+        [Description("菜单")] Menu = 1
+
+       ,
 
         /// <summary>
         ///     链接
         /// </summary>
-        [Description("链接")] Link = 2,
+        [Description("链接")] Link = 2
+
+       ,
 
         /// <summary>
         ///     框架
@@ -138,12 +165,16 @@ public static class Enums
         /// <summary>
         ///     用户
         /// </summary>
-        User = 1,
+        User = 1
+
+       ,
 
         /// <summary>
         ///     管理员
         /// </summary>
-        Administrator = 2,
+        Administrator = 2
+
+       ,
 
         /// <summary>
         ///     服务程序
@@ -151,18 +182,24 @@ public static class Enums
         Service = 3
     }
 
-
+    /// <summary>
+    ///     权限类型
+    /// </summary>
     public enum PermissionTypes
     {
         /// <summary>
         ///     分组
         /// </summary>
-        [Description("分组")] Group = 1,
+        [Description("分组")] Group = 1
+
+       ,
 
         /// <summary>
         ///     菜单
         /// </summary>
-        [Description("菜单")] Menu = 2,
+        [Description("菜单")] Menu = 2
+
+       ,
 
         /// <summary>
         ///     权限点
@@ -178,7 +215,9 @@ public static class Enums
         /// <summary>
         ///     注册账号
         /// </summary>
-        CreateUser = 1,
+        CreateUser = 1
+
+       ,
 
         /// <summary>
         ///     登录
@@ -194,24 +233,29 @@ public static class Enums
         /// <summary>
         ///     Select
         /// </summary>
-        Select,
+        Select
+
+       ,
 
         /// <summary>
         ///     Insert
         /// </summary>
-        Insert,
+        Insert
+
+       ,
 
         /// <summary>
         ///     Update
         /// </summary>
-        Update,
+        Update
+
+       ,
 
         /// <summary>
         ///     Delete
         /// </summary>
         Delete
     }
-
 
     /// <summary>
     ///     用户类型
@@ -221,12 +265,16 @@ public static class Enums
         /// <summary>
         ///     默认用户
         /// </summary>
-        DefaultUser = 1,
+        DefaultUser = 1
+
+       ,
 
         /// <summary>
         ///     租户管理员
         /// </summary>
-        TenantAdmin = 10,
+        TenantAdmin = 10
+
+       ,
 
         /// <summary>
         ///     平台管理员

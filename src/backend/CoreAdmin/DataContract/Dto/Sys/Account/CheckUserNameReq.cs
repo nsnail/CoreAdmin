@@ -9,8 +9,11 @@ namespace CoreAdmin.DataContract.Dto.Sys.Account;
 public record CheckUserNameReq : DataContract
 {
     /// <summary>
-    ///     用户名
+    ///     Gets or sets 用户名
     /// </summary>
+    /// <value>
+    ///     用户名
+    /// </value>
     [RequiredField]
     [RegularExpression(Strings.REGEX_USERNAME, ErrorMessage = Strings.MSG_USERNAME_STRONG)]
     public string UserName { get; set; }

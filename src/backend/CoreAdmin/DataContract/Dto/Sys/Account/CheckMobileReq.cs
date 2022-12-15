@@ -9,8 +9,11 @@ namespace CoreAdmin.DataContract.Dto.Sys.Account;
 public record CheckMobileReq : DataContract
 {
     /// <summary>
-    ///     手机号
+    ///     Gets or sets 手机号
     /// </summary>
+    /// <value>
+    ///     手机号
+    /// </value>
     [RequiredField]
     [RegularExpression(Strings.REGEX_MOBILE, ErrorMessage = Strings.MSG_MOBILE_USEFUL)]
     public long? Mobile { get; set; }

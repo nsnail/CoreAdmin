@@ -14,38 +14,23 @@ namespace CoreAdmin;
 [AppStartup(100)]
 public class Startup : AppStartup
 {
-    private static void PrintLog()
+    /// <summary>
+    ///     程序入口
+    /// </summary>
+    public static void Main(string[] args)
     {
-        var asm     = typeof(Startup).Assembly;
-        var version = $" v{asm.GetName().Version} ";
-        var repUrl = $" {asm.GetCustomAttributes<AssemblyMetadataAttribute>()
-                            .FirstOrDefault(x => x.Key == "RepositoryUrl")
-                            ?.Value} ";
+        PrintLog();
 
-        var logo = (t: """
-┌{0}┐
-│                                                                   │
-│   _____ _                 _                  _           _        │
-│  / ____(_)               | |        /\      | |         (_)       │
-│ | (___  _ _ __ ___  _ __ | | ___   /  \   __| |_ __ ___  _ _ __   │
-│  \___ \| | '_ ` _ \| '_ \| |/ _ \ / /\ \ / _` | '_ ` _ \| | '_ \  │
-│  ____) | | | | | | | |_) | |  __// ____ \ (_| | | | | | | | | | | │
-│ |_____/|_|_| |_| |_| .__/|_|\___/_/    \_\__,_|_| |_| |_|_|_| |_| │
-│                    | |                                            │
-│                    |_|                                            │
-│                                                                   │
-└{1}┘
-""", w: 67, c: '─');
+        Serve.Run(RunOptions.Default.WithArgs(args)
+                            .ConfigureBuilder(builder =>
 
-        Console.WriteLine(logo.t, version.PadLeft((logo.w + version.Length) / 2, logo.c).PadRight(logo.w, logo.c)
-                        , repUrl.PadLeft((logo.w          + repUrl.Length)  / 2, logo.c).PadRight(logo.w, logo.c));
+                                                  //
+                                                  builder.UseSerilogDefault(config => config.Init())));
     }
 
     /// <summary>
     ///     配置应用程序中间件
     /// </summary>
-    /// <param name="app"></param>
-    /// <param name="env"></param>
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
         app
@@ -55,9 +40,9 @@ public class Startup : AppStartup
            .UseHttpsRedirection() //                                   强制https
             #endif
 
-
             .UseAuthentication() //                                     认证授权
             .UseAuthorization()  //                                     认证授权
+
             // ↓                                                       修复 HttpContext  请求正文内容返回空 ，放在其他所有中间件前面
             .UseHttpRequestEnableBuffering() //                         确保AspNetCore Http请求 主体可以被多次读取。
             .UseInject(string.Empty)         //                         Furion基础中间件
@@ -70,6 +55,7 @@ public class Startup : AppStartup
             .UseRouting() //                                        控制器路由映射
             .UseSwaggerSkin() //                                        新版swagger ui（knife4j）中间件
             .UseEndpoints(endpoints =>
+
                               //
                               endpoints.MapControllers()) //            配置端点
             ;
@@ -78,7 +64,6 @@ public class Startup : AppStartup
     /// <summary>
     ///     配置服务容器
     /// </summary>
-    /// <param name="services"></param>
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddJwt<JwtHandler>(enableGlobalAuthorize: true) //    Jwt 授权处理器
@@ -99,9 +84,10 @@ public class Startup : AppStartup
                 .AddInjectWithUnifyResult<ApiResultHandler>() //       api响应结果模板
                 .AddJsonOptions(options =>
                                     options.JsonSerializerOptions.CopyFrom(default(JsonSerializerOptions)
-                                                                               .NewJsonSerializerOptions())
-                    //
-                ) //                                    json序列化配置
+                                                                               .NewJsonSerializerOptions()))
+
+            //
+            //                                    json序列化配置
 
             //使用NewtonsoftJson代替asp.netcore默认System.Text.Json组件进行正反序列化
             // .AddNewtonsoftJson(config => {
@@ -119,20 +105,30 @@ public class Startup : AppStartup
             ;
     }
 
-
-    /// <summary>
-    ///     程序入口
-    /// </summary>
-    /// <param name="args"></param>
-    public static void Main(string[] args)
+    private static void PrintLog()
     {
-        PrintLog();
+        var asm     = typeof(Startup).Assembly;
+        var version = $" v{asm.GetName().Version} ";
+        var repUrl = $" {asm.GetCustomAttributes<AssemblyMetadataAttribute>()
+                            .FirstOrDefault(x => x.Key == "RepositoryUrl")
+                            ?.Value} ";
 
-        Serve.Run(RunOptions.Default.WithArgs(args)
-                            .ConfigureBuilder(builder =>
-                                                  //
-                                                  builder.UseSerilogDefault(config => config.Init())
-                                //
-                            ));
+        var (t, w, c) = ("""
+┌{0}┐
+│                                                                   │
+│   _____ _                 _                  _           _        │
+│  / ____(_)               | |        /\      | |         (_)       │
+│ | (___  _ _ __ ___  _ __ | | ___   /  \   __| |_ __ ___  _ _ __   │
+│  \___ \| | '_ ` _ \| '_ \| |/ _ \ / /\ \ / _` | '_ ` _ \| | '_ \  │
+│  ____) | | | | | | | |_) | |  __// ____ \ (_| | | | | | | | | | | │
+│ |_____/|_|_| |_| |_| .__/|_|\___/_/    \_\__,_|_| |_| |_|_|_| |_| │
+│                    | |                                            │
+│                    |_|                                            │
+│                                                                   │
+└{1}┘
+""", 67, '─');
+
+        Console.WriteLine(t, version.PadLeft((w + version.Length) / 2, c).PadRight(w, c)
+                        , repUrl.PadLeft((w     + repUrl.Length)  / 2, c).PadRight(w, c));
     }
 }

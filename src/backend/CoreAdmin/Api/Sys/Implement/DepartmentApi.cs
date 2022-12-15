@@ -1,5 +1,4 @@
 using CoreAdmin.DataContract.DbMap;
-using CoreAdmin.DataContract.Dto;
 using CoreAdmin.DataContract.Dto.Sys.Department;
 using Mapster;
 using Microsoft.AspNetCore.Authorization;

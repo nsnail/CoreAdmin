@@ -4,18 +4,24 @@ using FreeSql.DataAnnotations;
 namespace CoreAdmin.DataContract.DbMap;
 
 /// <summary>
-///     用户与角色映射表
+///     Gets or sets 用户与角色映射表
 /// </summary>
 [Table]
 public record TbSysUserRole : NoModifyTable
 {
     /// <summary>
-    ///     角色id
+    ///     Gets or sets 角色id
     /// </summary>
+    /// <value>
+    ///     角色id
+    /// </value>
     public virtual long RoleId { get; set; }
 
     /// <summary>
-    ///     用户id
+    ///     Gets or sets 用户id
     /// </summary>
+    /// <value>
+    ///     用户id
+    /// </value>
     public virtual long UserId { get; set; }
 }

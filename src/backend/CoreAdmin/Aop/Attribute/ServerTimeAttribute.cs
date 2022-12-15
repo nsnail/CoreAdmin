@@ -7,7 +7,10 @@ namespace CoreAdmin.Aop.Attribute;
 public class ServerTimeAttribute : System.Attribute
 {
     /// <summary>
-    ///     启用
+    ///     Gets or sets a value indicating whether 启用
     /// </summary>
+    /// <value>
+    ///     A value indicating whether 启用
+    /// </value>
     public bool Enable { get; set; } = true;
 }

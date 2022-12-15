@@ -8,12 +8,16 @@ public enum DocExpansionNode
     /// <summary>
     ///     列表式
     /// </summary>
-    List,
+    List
+
+   ,
 
     /// <summary>
     ///     全展开
     /// </summary>
-    Full,
+    Full
+
+   ,
 
     /// <summary>
     ///     不展开

@@ -3,11 +3,36 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{49DB177C-42F5-4E40-BAD7-6A93357D8CF9}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{858F3E76-9730-4D25-9389-63DBFB8E00DF}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{3178AD65-090A-407E-A2A7-FB70CFEAD7D9}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{1C7B78A2-DD56-48B7-944E-16E3BE41EAB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreAdmin", "src\backend\CoreAdmin\CoreAdmin.csproj", "{062C69F0-897A-436E-875B-2CC1B72A18DC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreAdmin", "src\backend\CoreAdmin\CoreAdmin.csproj", "{6EF10201-4C10-48FE-8B1E-7BFFE80886D5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "meta", "meta", "{EFE42F6A-323D-48C4-9CFF-2CD90F3CA569}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		.tgitconfig = .tgitconfig
+		AddMetaFilesToSln.csx = AddMetaFilesToSln.csx
+		build.cake = build.cake
+		code-format.cmd = code-format.cmd
+		CodeCleanupOnSave.csx = CodeCleanupOnSave.csx
+		CodeQuality.props = CodeQuality.props
+		CoreAdmin.sln.DotSettings = CoreAdmin.sln.DotSettings
+		Directory.Build.props = Directory.Build.props
+		dotnet-tools.json = dotnet-tools.json
+		GenerateResx.targets = GenerateResx.targets
+		git-clean.cmd = git-clean.cmd
+		global.json = global.json
+		ImageOptimize.csx = ImageOptimize.csx
+		LICENSE = LICENSE
+		README.md = README.md
+		SafetyDelUnusedResx.ahk = SafetyDelUnusedResx.ahk
+		stylecop.json = stylecop.json
+		StyleCopAnalyzers.ruleset = StyleCopAnalyzers.ruleset
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,13 +43,13 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{062C69F0-897A-436E-875B-2CC1B72A18DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{062C69F0-897A-436E-875B-2CC1B72A18DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{062C69F0-897A-436E-875B-2CC1B72A18DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{062C69F0-897A-436E-875B-2CC1B72A18DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EF10201-4C10-48FE-8B1E-7BFFE80886D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EF10201-4C10-48FE-8B1E-7BFFE80886D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EF10201-4C10-48FE-8B1E-7BFFE80886D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EF10201-4C10-48FE-8B1E-7BFFE80886D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{3178AD65-090A-407E-A2A7-FB70CFEAD7D9} = {49DB177C-42F5-4E40-BAD7-6A93357D8CF9}
-		{062C69F0-897A-436E-875B-2CC1B72A18DC} = {3178AD65-090A-407E-A2A7-FB70CFEAD7D9}
+		{1C7B78A2-DD56-48B7-944E-16E3BE41EAB2} = {858F3E76-9730-4D25-9389-63DBFB8E00DF}
+		{6EF10201-4C10-48FE-8B1E-7BFFE80886D5} = {1C7B78A2-DD56-48B7-944E-16E3BE41EAB2}
 	EndGlobalSection
 EndGlobal

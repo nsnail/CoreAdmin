@@ -6,7 +6,10 @@ namespace CoreAdmin.DataContract.DbMap.Dependency;
 public interface IFieldBitSet
 {
     /// <summary>
-    ///     比特位
+    ///     Gets or sets 比特位
     /// </summary>
+    /// <value>
+    ///     比特位
+    /// </value>
     long BitSet { get; set; }
 }

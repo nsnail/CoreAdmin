@@ -10,8 +10,10 @@ namespace CoreAdmin.DataContract.DbMap;
 public record TbSysRole : FullTable
 {
     /// <summary>
-    ///     角色名称
+    ///     Gets or sets 角色名称
     /// </summary>
-
+    /// <value>
+    ///     角色名称
+    /// </value>
     public virtual string RoleName { get; set; }
 }

@@ -4,7 +4,7 @@ using FreeSql.DataAnnotations;
 namespace CoreAdmin.DataContract.DbMap;
 
 /// <summary>
-///     用户表
+///     Gets or sets 用户表
 /// </summary>
 [Table]
 public record TbSysUser : FullTable, IFieldBitSet
@@ -14,28 +14,38 @@ public record TbSysUser : FullTable, IFieldBitSet
     public virtual long BitSet { get; set; }
 
     /// <summary>
-    ///     手机号
+    ///     Gets or sets 手机号
     /// </summary>
+    /// <value>
+    ///     手机号
+    /// </value>
     [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
     public virtual long? Mobile { get; set; }
 
     /// <summary>
-    ///     密码
+    ///     Gets or sets 密码
     /// </summary>
+    /// <value>
+    ///     密码
+    /// </value>
     [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
     public virtual Guid Password { get; set; }
 
-
     /// <summary>
-    ///     做授权验证的Token，全局唯一，可以随时重置（强制下线）
+    ///     Gets or sets 做授权验证的Token，全局唯一，可以随时重置（强制下线）
     /// </summary>
+    /// <value>
+    ///     做授权验证的Token，全局唯一，可以随时重置（强制下线）
+    /// </value>
     [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
     public virtual Guid Token { get; set; }
 
-
     /// <summary>
-    ///     用户名
+    ///     Gets or sets 用户名
     /// </summary>
+    /// <value>
+    ///     用户名
+    /// </value>
     [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
     public virtual string UserName { get; set; }
 }

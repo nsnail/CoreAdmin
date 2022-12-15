@@ -6,17 +6,26 @@ namespace CoreAdmin.DataContract.DbMap.Dependency;
 public interface IFieldAdd
 {
     /// <summary>
-    ///     创建时间
+    ///     Gets or sets 创建时间
     /// </summary>
+    /// <value>
+    ///     创建时间
+    /// </value>
     DateTime CreatedTime { get; set; }
 
     /// <summary>
-    ///     创建者Id
+    ///     Gets or sets 创建者Id
     /// </summary>
+    /// <value>
+    ///     创建者Id
+    /// </value>
     long? CreatedUserId { get; set; }
 
     /// <summary>
-    ///     创建者
+    ///     Gets or sets 创建者
     /// </summary>
+    /// <value>
+    ///     创建者
+    /// </value>
     string CreatedUserName { get; set; }
 }

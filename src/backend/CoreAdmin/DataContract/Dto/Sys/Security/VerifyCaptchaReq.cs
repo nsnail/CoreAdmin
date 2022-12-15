@@ -3,7 +3,7 @@ using CoreAdmin.Aop.Attribute;
 namespace CoreAdmin.DataContract.Dto.Sys.Security;
 
 /// <summary>
-///     人机校验请求
+///     Gets or sets 人机校验请求
 /// </summary>
 public record VerifyCaptchaReq : ICacheKey
 {
@@ -12,8 +12,11 @@ public record VerifyCaptchaReq : ICacheKey
     public string CacheKey { get; set; }
 
     /// <summary>
-    ///     验证数据
+    ///     Gets or sets 验证数据
     /// </summary>
+    /// <value>
+    ///     验证数据
+    /// </value>
     [RequiredField]
     public string VerifyData { get; set; }
 }

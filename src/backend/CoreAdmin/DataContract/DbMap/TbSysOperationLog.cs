@@ -4,106 +4,152 @@ using FreeSql.DataAnnotations;
 namespace CoreAdmin.DataContract.DbMap;
 
 /// <summary>
-///     操作日志表
+///     Gets or sets 操作日志表
 /// </summary>
 [Table]
 public record TbSysOperationLog : NoModifyTable
 {
     /// <summary>
-    ///     操作
+    ///     Gets or sets 操作
     /// </summary>
+    /// <value>
+    ///     操作
+    /// </value>
     [Column(CanUpdate = false)]
     public virtual string Action { get; set; }
 
     /// <summary>
-    ///     客户端IP
+    ///     Gets or sets 客户端IP
     /// </summary>
+    /// <value>
+    ///     客户端IP
+    /// </value>
     [Column(CanUpdate = false)]
     public virtual string ClientIp { get; set; }
 
     /// <summary>
-    ///     控制器
+    ///     Gets or sets 控制器
     /// </summary>
+    /// <value>
+    ///     控制器
+    /// </value>
     [Column(CanUpdate = false)]
     public virtual string Controller { get; set; }
 
     /// <summary>
-    ///     执行耗时（ms）
+    ///     Gets or sets 执行耗时（ms）
     /// </summary>
+    /// <value>
+    ///     执行耗时（ms）
+    /// </value>
     [Column(CanUpdate = false)]
     public virtual uint Duration { get; set; }
 
     /// <summary>
-    ///     服务端运行环境
+    ///     Gets or sets 服务端运行环境
     /// </summary>
+    /// <value>
+    ///     服务端运行环境
+    /// </value>
     [Column(CanUpdate = false)]
     public virtual string Environment { get; set; }
 
     /// <summary>
-    ///     请求方法
+    ///     Gets or sets 请求方法
     /// </summary>
+    /// <value>
+    ///     请求方法
+    /// </value>
     [Column(CanUpdate = false)]
     public virtual string Method { get; set; }
 
     /// <summary>
-    ///     来源地址
+    ///     Gets or sets 来源地址
     /// </summary>
+    /// <value>
+    ///     来源地址
+    /// </value>
     [Column(CanUpdate = false)]
     public virtual string ReferUrl { get; set; }
 
     /// <summary>
-    ///     请求content-type
+    ///     Gets or sets 请求content-type
     /// </summary>
+    /// <value>
+    ///     请求content-type
+    /// </value>
     [Column(CanUpdate = false)]
     public virtual string RequestContentType { get; set; }
 
-
     /// <summary>
-    ///     请求参数
+    ///     Gets or sets 请求参数
     /// </summary>
+    /// <value>
+    ///     请求参数
+    /// </value>
     [Column(CanUpdate = false)]
     public virtual string RequestParameters { get; set; }
 
     /// <summary>
-    ///     请求地址
+    ///     Gets or sets 请求地址
     /// </summary>
+    /// <value>
+    ///     请求地址
+    /// </value>
     [Column(CanUpdate = false)]
     public virtual string RequestUrl { get; set; }
 
-
     /// <summary>
-    ///     响应原始类型
+    ///     Gets or sets 响应原始类型
     /// </summary>
+    /// <value>
+    ///     响应原始类型
+    /// </value>
     [Column(CanUpdate = false)]
     public virtual string ResponseRawType { get; set; }
 
     /// <summary>
-    ///     响应结果
+    ///     Gets or sets 响应结果
     /// </summary>
+    /// <value>
+    ///     响应结果
+    /// </value>
     [Column(CanUpdate = false)]
     public virtual string ResponseResult { get; set; }
 
     /// <summary>
-    ///     响应状态码
+    ///     Gets or sets 响应状态码
     /// </summary>
+    /// <value>
+    ///     响应状态码
+    /// </value>
     [Column(CanUpdate = false)]
     public virtual ushort ResponseStatusCode { get; set; }
 
     /// <summary>
-    ///     响应封装类型
+    ///     Gets or sets 响应封装类型
     /// </summary>
+    /// <value>
+    ///     响应封装类型
+    /// </value>
     [Column(CanUpdate = false)]
     public virtual string ResponseWrapType { get; set; }
 
     /// <summary>
-    ///     服务器IP
+    ///     Gets or sets 服务器IP
     /// </summary>
+    /// <value>
+    ///     服务器IP
+    /// </value>
     [Column(CanUpdate = false)]
     public virtual string ServerIp { get; set; }
 
     /// <summary>
-    ///     浏览器标识
+    ///     Gets or sets 浏览器标识
     /// </summary>
+    /// <value>
+    ///     浏览器标识
+    /// </value>
     [Column(CanUpdate = false)]
     public virtual string UserAgent { get; set; }
 }

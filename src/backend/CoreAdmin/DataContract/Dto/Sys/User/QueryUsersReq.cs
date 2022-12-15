@@ -2,6 +2,7 @@ using CoreAdmin.DataContract.DbMap;
 
 namespace CoreAdmin.DataContract.Dto.Sys.User;
 
+/// <inheritdoc />
 public record QueryUsersReq : TbSysUser
 {
     /// <inheritdoc />

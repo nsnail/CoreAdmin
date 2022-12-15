@@ -20,16 +20,16 @@ namespace CoreAdmin.Aop.Filter;
 [SuppressSniffer]
 public class RequestAuditHandler : IAsyncActionFilter
 {
+    private readonly IEventPublisher _eventPublisher;
+
     /// <summary>
+    ///     Initializes a new instance of the <see cref="RequestAuditHandler" /> class.
     ///     构造函数
     /// </summary>
-    /// <param name="eventPublisher"></param>
     public RequestAuditHandler(IEventPublisher eventPublisher)
     {
         _eventPublisher = eventPublisher;
     }
-
-    private readonly IEventPublisher _eventPublisher;
 
     /// <inheritdoc />
     public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
@@ -41,34 +41,39 @@ public class RequestAuditHandler : IAsyncActionFilter
 
         var actionDescriptor = context.ActionDescriptor as ControllerActionDescriptor;
         var (retType, retData) = GetReturnData(resultContext);
+
         // ReSharper disable once UseObjectOrCollectionInitializer
         var auditData = new {
-            Action      = actionDescriptor?.ActionName,
-            ClientIp    = context.HttpContext.GetRemoteIpAddressToIPv4(),
-            Controller  = actionDescriptor?.ControllerName,
-            Duration    = duration,
-            Environment = App.WebHostEnvironment.EnvironmentName,
-            context.HttpContext.Request.Method,
-            ReferUrl           = context.HttpContext.Request.GetRefererUrlAddress(),
-            RequestContentType = context.HttpContext.Request.ContentType,
-            // RequestParameters = GenerateRequestParameterJson(actionDescriptor?.MethodInfo, context.ActionArguments),
-            RequestParameters = context.ActionArguments.Json(),
-            RequestUrl        = context.HttpContext.Request.GetRequestUrlAddress(),
-            // ResponseRawType    = HandleGenericType(actionDescriptor?.MethodInfo.ReturnType),
-            ResponseRawType    = actionDescriptor?.MethodInfo.ReturnType.ToString(),
-            ResponseStatusCode = (ushort)context.HttpContext.Response.StatusCode,
-            // ResponseWrapType   = HandleGenericType(retType),
-            ResponseWrapType = retType?.ToString(),
-            ResponseResult   = retData?.Json(),
-            ServerIp         = context.HttpContext.GetLocalIpAddressToIPv4(),
-            UserAgent        = context.HttpContext.Request.Headers["User-Agent"]
-        };
+                                Action      = actionDescriptor?.ActionName
+                              , ClientIp    = context.HttpContext.GetRemoteIpAddressToIPv4()
+                              , Controller  = actionDescriptor?.ControllerName
+                              , Duration    = duration
+                              , Environment = App.WebHostEnvironment.EnvironmentName
+                              , context.HttpContext.Request.Method
+                              , ReferUrl           = context.HttpContext.Request.GetRefererUrlAddress()
+                              , RequestContentType = context.HttpContext.Request.ContentType
+                               ,
 
+                                // RequestParameters = GenerateRequestParameterJson(actionDescriptor?.MethodInfo, context.ActionArguments),
+                                RequestParameters = context.ActionArguments.Json()
+                              , RequestUrl        = context.HttpContext.Request.GetRequestUrlAddress()
+                               ,
+
+                                // ResponseRawType    = HandleGenericType(actionDescriptor?.MethodInfo.ReturnType),
+                                ResponseRawType    = actionDescriptor?.MethodInfo.ReturnType.ToString()
+                              , ResponseStatusCode = (ushort)context.HttpContext.Response.StatusCode
+                               ,
+
+                                // ResponseWrapType   = HandleGenericType(retType),
+                                ResponseWrapType = retType?.ToString()
+                              , ResponseResult   = retData?.Json()
+                              , ServerIp         = context.HttpContext.GetLocalIpAddressToIPv4()
+                              , UserAgent        = context.HttpContext.Request.Headers["User-Agent"]
+                            };
 
         // 发布审计事件
-        await _eventPublisher.PublishAsync($"{nameof(RequestAuditHandler)}.{nameof(OnActionExecutionAsync)}",
-                                           auditData);
-
+        await _eventPublisher.PublishAsync( //
+            $"{nameof(RequestAuditHandler)}.{nameof(OnActionExecutionAsync)}", auditData);
 
         //============== 这里是执行方法之前获取数据 ====================
         // 获取控制器、路由信息
@@ -102,60 +107,57 @@ public class RequestAuditHandler : IAsyncActionFilter
         // _logger.Debug(returnResult);
     }
 
-
     /// <summary>
     ///     检查是否是有效的结果（可进行规范化的结果）
     /// </summary>
-    /// <param name="result"></param>
-    /// <param name="data"></param>
-    /// <returns></returns>
     private static bool CheckVaildResult(IActionResult result, out object data)
     {
         data = default;
 
         // 排除以下结果，跳过规范化处理
         var isDataResult = result switch {
-                               ViewResult             => false,
-                               PartialViewResult      => false,
-                               FileResult             => false,
-                               ChallengeResult        => false,
-                               SignInResult           => false,
-                               SignOutResult          => false,
-                               RedirectToPageResult   => false,
-                               RedirectToRouteResult  => false,
-                               RedirectResult         => false,
-                               RedirectToActionResult => false,
-                               LocalRedirectResult    => false,
-                               ForbidResult           => false,
-                               ViewComponentResult    => false,
-                               PageResult             => false,
-                               NotFoundResult         => false,
-                               NotFoundObjectResult   => false,
-                               _                      => true
+                               ViewResult             => false
+                             , PartialViewResult      => false
+                             , FileResult             => false
+                             , ChallengeResult        => false
+                             , SignInResult           => false
+                             , SignOutResult          => false
+                             , RedirectToPageResult   => false
+                             , RedirectToRouteResult  => false
+                             , RedirectResult         => false
+                             , RedirectToActionResult => false
+                             , LocalRedirectResult    => false
+                             , ForbidResult           => false
+                             , ViewComponentResult    => false
+                             , PageResult             => false
+                             , NotFoundResult         => false
+                             , NotFoundObjectResult   => false
+                             , _                      => true
                            };
 
         // 目前支持返回值 ActionResult
-        if (isDataResult)
+        if (isDataResult) {
             data = result switch {
                        // 处理内容结果
-                       ContentResult content => content.Content,
+                       ContentResult content => content.Content
+                      ,
+
                        // 处理对象结果
-                       ObjectResult obj => obj.Value,
+                       ObjectResult obj => obj.Value
+                      ,
+
                        // 处理 JSON 对象
-                       JsonResult json => json.Value,
-                       _               => null
+                       JsonResult json => json.Value
+                     , _               => null
                    };
+        }
 
         return isDataResult;
     }
 
-
     /// <summary>
     ///     生成请求参数信息日志模板
     /// </summary>
-    /// <param name="method"></param>
-    /// <param name="parameterValues"></param>
-    /// <returns></returns>
     private static string GenerateRequestParameterJson(MethodBase method, IDictionary<string, object> parameterValues)
     {
         using var stream = new MemoryStream();
@@ -187,6 +189,7 @@ public class RequestAuditHandler : IAsyncActionFilter
 
                             goto writeEndObject;
                         }
+
                         // 多文件
                         case List<IFormFile> formFiles: {
                             writer.WriteStartArray();
@@ -203,20 +206,22 @@ public class RequestAuditHandler : IAsyncActionFilter
 
                             goto writeEndObject;
                         }
-                    }
 
-                    break;
+                        default:
+                            throw new NotImplementedException();
+                    }
                 }
+
                 // 处理 byte[] 参数类型
                 case byte[] byteArray:
                     writer.WritePropertyName("value");
-
 
                     writer.WriteStartObject();
                     writer.WriteNumber("length", byteArray.Length);
                     writer.WriteEndObject();
 
                     goto writeEndObject;
+
                 // 处理基元类型，字符串类型和空值
                 default: {
                     if (parameterType.IsPrimitive || value is string or null) {
@@ -229,23 +234,29 @@ public class RequestAuditHandler : IAsyncActionFilter
                                 writer.WriteStringValue(str);
                                 break;
                             default: {
-                                if (double.TryParse(value.ToString(), out var r))
+                                if (double.TryParse(value.ToString(), out var r)) {
                                     writer.WriteNumberValue(r);
-                                else
+                                }
+                                else {
                                     writer.WriteStringValue(value.ToString());
+                                }
+
                                 break;
                             }
                         }
                     }
+
                     // 其他类型统一进行序列化
                     else {
                         writer.WritePropertyName("value");
                         object rawValue = TrySerializeObject(value, out var succeed);
 
-                        if (succeed)
+                        if (succeed) {
                             writer.WriteRawValue(rawValue?.ToString() ?? string.Empty);
-                        else
+                        }
+                        else {
                             writer.WriteNullValue();
+                        }
                     }
 
                     break;
@@ -264,8 +275,7 @@ public class RequestAuditHandler : IAsyncActionFilter
         return Encoding.UTF8.GetString(stream.ToArray());
     }
 
-
-    private static (Type, object) GetReturnData(ActionExecutedContext resultContext)
+    private static (Type Type, object Data) GetReturnData(ActionExecutedContext resultContext)
     {
         Type type;
 
@@ -273,15 +283,16 @@ public class RequestAuditHandler : IAsyncActionFilter
         if (CheckVaildResult(resultContext.Result, out var data)) {
             type = data?.GetType();
         }
+
         // 处理文件类型
         else if (resultContext.Result is FileResult fileResult) {
             data = new {
-                FileName = fileResult.FileDownloadName,
-                fileResult.ContentType,
-                Length = fileResult is FileContentResult fileContentResult
-                             ? (object)fileContentResult.FileContents.Length
-                             : null
-            };
+                           FileName = fileResult.FileDownloadName
+                         , fileResult.ContentType
+                         , Length = fileResult is FileContentResult fileContentResult
+                               ? (object)fileContentResult.FileContents.Length
+                               : null
+                       };
 
             type = fileResult.GetType();
         }
@@ -292,17 +303,20 @@ public class RequestAuditHandler : IAsyncActionFilter
         return (type, data);
     }
 
-
     /// <summary>
     ///     处理泛型类型转字符串打印问题
     /// </summary>
-    /// <param name="type"></param>
-    /// <returns></returns>
     private static string HandleGenericType(Type type)
     {
-        if (type == null) return string.Empty;
+        if (type == null) {
+            return string.Empty;
+        }
+
         // 处理泛型类型问题
-        if (!type.IsConstructedGenericType) return type.FullName;
+        if (!type.IsConstructedGenericType) {
+            return type.FullName;
+        }
+
         var prefix = type.GetGenericArguments()
                          .Select(HandleGenericType)
                          .Aggregate((previous, current) => previous + current);
@@ -311,36 +325,36 @@ public class RequestAuditHandler : IAsyncActionFilter
         return type.FullName!.Split('`').First() + "_" + prefix;
     }
 
-
     /// <summary>
     ///     序列化对象
     /// </summary>
-    /// <param name="obj"></param>
-    /// <param name="succeed"></param>
-    /// <returns></returns>
     private static string TrySerializeObject(object obj, out bool succeed)
     {
         try {
             // 序列化默认配置
             var jsonSerializerSettings = new JsonSerializerSettings {
-                // 解决属性忽略问题
-                //ContractResolver = new IgnorePropertiesContractResolver(GetIgnorePropertyNames(monitorMethod), GetIgnorePropertyTypes(monitorMethod)),
+                                                                        // 解决属性忽略问题
+                                                                        //ContractResolver = new IgnorePropertiesContractResolver(GetIgnorePropertyNames(monitorMethod), GetIgnorePropertyTypes(monitorMethod)),
 
-                // 解决循环引用问题
-                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                                                                        // 解决循环引用问题
+                                                                        ReferenceLoopHandling
+                                                                            = ReferenceLoopHandling.Ignore
+                                                                       ,
 
-                // 解决 DateTimeOffset 序列化/反序列化问题
-                MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
-                DateParseHandling        = DateParseHandling.None
-            };
+                                                                        // 解决 DateTimeOffset 序列化/反序列化问题
+                                                                        MetadataPropertyHandling
+                                                                            = MetadataPropertyHandling.Ignore
+                                                                      , DateParseHandling = DateParseHandling.None
+                                                                    };
 
             // 解决 long 精度问题
             jsonSerializerSettings.Converters.AddLongTypeConverters();
 
             // 解决 DateTimeOffset 序列化/反序列化问题
             jsonSerializerSettings.Converters.Add(new IsoDateTimeConverter {
-                DateTimeStyles = DateTimeStyles.AssumeUniversal
-            });
+                                                                               DateTimeStyles
+                                                                                   = DateTimeStyles.AssumeUniversal
+                                                                           });
 
             var result = JsonConvert.SerializeObject(obj, jsonSerializerSettings);
 

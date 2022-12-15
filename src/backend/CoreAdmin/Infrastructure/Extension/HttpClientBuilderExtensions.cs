@@ -10,8 +10,6 @@ public static class HttpClientBuilderExtensions
     /// <summary>
     ///     使用Fiddler代理（抓包调试）
     /// </summary>
-    /// <param name="me"></param>
-    /// <returns></returns>
     public static IHttpClientBuilder AddFiddler(this IHttpClientBuilder me)
     {
         return me.ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler {

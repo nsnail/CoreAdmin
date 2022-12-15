@@ -10,8 +10,11 @@ namespace CoreAdmin.DataContract.Dto.Sys.Security;
 public record VerifySmsCodeReq : CheckMobileReq
 {
     /// <summary>
-    ///     验证码
+    ///     Gets or sets 验证码
     /// </summary>
+    /// <value>
+    ///     验证码
+    /// </value>
     [RequiredField]
     [RegularExpression(Strings.REGEX_SMSCODE, ErrorMessage = Strings.MSG_SMSCODE_NUMBER)]
     public string Code { get; set; }

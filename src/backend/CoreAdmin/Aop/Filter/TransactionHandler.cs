@@ -9,22 +9,19 @@ namespace CoreAdmin.Aop.Filter;
 /// </summary>
 [SuppressSniffer]
 public class TransactionHandler : IAsyncActionFilter
-
 {
+    private readonly ILogger<TransactionHandler> _logger;
+    private readonly UnitOfWorkManager           _uowManager;
+
     /// <summary>
+    ///     Initializes a new instance of the <see cref="TransactionHandler" /> class.
     ///     事务拦截器
     /// </summary>
-    /// <param name="logger"></param>
-    /// <param name="uowManager"></param>
     public TransactionHandler(ILogger<TransactionHandler> logger, UnitOfWorkManager uowManager)
     {
         _logger     = logger;
         _uowManager = uowManager;
     }
-
-    private readonly ILogger<TransactionHandler> _logger;
-    private readonly UnitOfWorkManager           _uowManager;
-
 
     /// <inheritdoc />
     public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
@@ -34,7 +31,10 @@ public class TransactionHandler : IAsyncActionFilter
         try {
             _logger.Info($"事务 {hashCode} 开始");
             var result = await next();
-            if (result.Exception is not null) throw result.Exception;
+            if (result.Exception is not null) {
+                throw result.Exception;
+            }
+
             unitOfWork.Commit();
             _logger.Info($"事务 {hashCode} 完成");
         }

@@ -6,8 +6,8 @@ namespace CoreAdmin.Aop.Attribute;
 public class RequiredFieldAttribute : RequiredAttribute
 {
     /// <inheritdoc />
-    public override string FormatErrorMessage(string whatever)
+    public override string FormatErrorMessage(string name)
     {
-        return !string.IsNullOrEmpty(ErrorMessage) ? ErrorMessage : $"{whatever} 是必填项";
+        return !string.IsNullOrEmpty(ErrorMessage) ? ErrorMessage : $"{name} 是必填项";
     }
 }

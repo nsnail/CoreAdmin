@@ -20,7 +20,6 @@ public class AccountApi : ApiBase<IAccountApi, TbSysUser>, IAccountApi
         _securityApi = securityApi;
     }
 
-
     /// <inheritdoc />
     [AllowAnonymous]
     public async Task<bool> CheckMobile(CheckMobileReq req)
@@ -35,14 +34,15 @@ public class AccountApi : ApiBase<IAccountApi, TbSysUser>, IAccountApi
         return !await Repository.Select.AnyAsync(a => a.UserName == req.UserName);
     }
 
-
     /// <inheritdoc />
     [AllowAnonymous]
     public async Task Create(CreateReq req)
     {
         //短信验证码
         var checkResult = await _securityApi.VerifySmsCode(req.VerifySmsCodeReq);
-        if (!checkResult) throw Oops.Oh(Enums.ErrorCodes.InvalidInput, Strings.MSG_SMSCODE_WRONG);
+        if (!checkResult) {
+            throw Oops.Oh(Enums.ErrorCodes.InvalidInput, Strings.MSG_SMSCODE_WRONG);
+        }
 
         var tbUser = new TbSysUser {
                                        Mobile   = req.VerifySmsCodeReq.Mobile
@@ -53,18 +53,19 @@ public class AccountApi : ApiBase<IAccountApi, TbSysUser>, IAccountApi
         await Repository.InsertAsync(tbUser);
     }
 
-
     /// <inheritdoc />
     [AllowAnonymous]
     public async Task Login(LoginReq req)
     {
         var tbUser = await Repository.GetAsync(x => x.UserName == req.UserName &&
                                                     x.Password == req.Password.Pwd().Guid());
-        if (tbUser is null) throw Oops.Oh(Enums.ErrorCodes.InvalidInput, Strings.MSG_UNAME_PASSWORD_WRONG);
+        if (tbUser is null) {
+            throw Oops.Oh(Enums.ErrorCodes.InvalidInput, Strings.MSG_UNAME_PASSWORD_WRONG);
+        }
 
-        if (tbUser.BitSet.HasFlag(Enums.UserBitSets.Disabled))
+        if (tbUser.BitSet.HasFlag(Enums.UserBitSets.Disabled)) {
             throw Oops.Oh(Enums.ErrorCodes.InvalidInput, Strings.MSG_USER_DISABLED);
-
+        }
 
         var accessToken = JWTEncryption.Encrypt(new Dictionary<string, object> {
                                                                                    {
@@ -76,7 +77,6 @@ public class AccountApi : ApiBase<IAccountApi, TbSysUser>, IAccountApi
                                                                                        }
                                                                                    }
                                                                                });
-
 
         var refreshToken = JWTEncryption.GenerateRefreshToken(accessToken);
 

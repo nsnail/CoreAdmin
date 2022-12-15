@@ -6,17 +6,26 @@ namespace CoreAdmin.DataContract;
 public record ContextUser : IScoped
 {
     /// <summary>
-    ///     做授权验证的Token，全局唯一，可以随时重置（强制下线）
+    ///     Gets or sets 用户id
     /// </summary>
-    internal Guid Token { get; init; }
-
-    /// <summary>
+    /// <value>
     ///     用户id
-    /// </summary>
+    /// </value>
     public long Id { get; set; }
 
     /// <summary>
-    ///     用户名
+    ///     Gets or sets 用户名
     /// </summary>
+    /// <value>
+    ///     用户名
+    /// </value>
     public string UserName { get; set; }
+
+    /// <summary>
+    ///     Gets 做授权验证的Token，全局唯一，可以随时重置（强制下线）
+    /// </summary>
+    /// <value>
+    ///     做授权验证的Token，全局唯一，可以随时重置（强制下线）
+    /// </value>
+    internal Guid Token { get; init; }
 }

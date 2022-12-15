@@ -32,27 +32,12 @@ namespace CoreAdmin.Aop.Filter;
 public class ApiResultHandler : IUnifyResultProvider
 {
     /// <summary>
-    ///     返回 RESTful 风格结果集
-    /// </summary>
-    /// <param name="errorCode"></param>
-    /// <param name="data"></param>
-    /// <param name="message"></param>
-    /// <returns></returns>
-    private static RestfulInfo<dynamic> RestfulResult(Enums.ErrorCodes errorCode, object data = default
-                                                    , object           message = default)
-    {
-        return new RestfulInfo<dynamic> { Code = errorCode, Data = data, Msg = message };
-    }
-
-    /// <summary>
     ///     业务异常
     /// </summary>
-    /// <param name="context"></param>
-    /// <param name="metadata"></param>
-    /// <returns></returns>
     public IActionResult OnException(ExceptionContext context, ExceptionMetadata metadata)
     {
-        var result = RestfulResult(metadata.OriginErrorCode is Enums.ErrorCodes code ? code : Enums.ErrorCodes.Unknown
+        var result = RestfulResult(//
+            metadata.OriginErrorCode is Enums.ErrorCodes code ? code : Enums.ErrorCodes.Unknown
                                  , metadata.Data, metadata.Errors);
 
         return new JsonResult(result) { StatusCode = StatusCodes.Status400BadRequest };
@@ -68,10 +53,10 @@ public class ApiResultHandler : IUnifyResultProvider
     // /// <summary>
     // ///     特定状态码返回值
     // /// </summary>
-    // /// <param name="context"></param>
-    // /// <param name="statusCode"></param>
-    // /// <param name="unifyResultSettings"></param>
-    // /// <returns></returns>
+    //
+    //
+    //
+    //
     // public async Task OnResponseStatusCodes(HttpContext                context,
     //                                         int                        statusCode,
     //                                         UnifyResultSettingsOptions unifyResultSettings)
@@ -97,9 +82,6 @@ public class ApiResultHandler : IUnifyResultProvider
     /// <summary>
     ///     成功返回值
     /// </summary>
-    /// <param name="context"></param>
-    /// <param name="data"></param>
-    /// <returns></returns>
     public IActionResult OnSucceeded(ActionExecutedContext context, object data)
     {
         return new JsonResult(RestfulResult(0, data));
@@ -108,13 +90,19 @@ public class ApiResultHandler : IUnifyResultProvider
     /// <summary>
     ///     验证失败
     /// </summary>
-    /// <param name="context"></param>
-    /// <param name="metadata"></param>
-    /// <returns></returns>
     public IActionResult OnValidateFailed(ActionExecutingContext context, ValidationMetadata metadata)
     {
         return new JsonResult(RestfulResult(Enums.ErrorCodes.InvalidInput, metadata.Data, metadata.ValidationResult)) {
                    StatusCode = StatusCodes.Status400BadRequest
                };
+    }
+
+    /// <summary>
+    ///     返回 RESTful 风格结果集
+    /// </summary>
+    private static RestfulInfo<dynamic> RestfulResult(Enums.ErrorCodes errorCode, object data = default
+                                                    , object           message = default)
+    {
+        return new RestfulInfo<dynamic> { Code = errorCode, Data = data, Msg = message };
     }
 }

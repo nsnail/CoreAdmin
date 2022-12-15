@@ -1,7 +1,11 @@
 <Project>
-	<PropertyGroup>
-		<BaseOutputPath>../../../build/backend/CoreAdmin/bin</BaseOutputPath>
-		<BaseIntermediateOutputPath>../../../build/backend/CoreAdmin/obj</BaseIntermediateOutputPath>
-		<MSBuildProjectExtensionsPath>../../../build/backend/CoreAdmin/obj</MSBuildProjectExtensionsPath>
-	</PropertyGroup>
+    <PropertyGroup>
+        <BaseIntermediateOutputPath>../../../dist/backend</BaseIntermediateOutputPath>
+        <BaseOutputPath>../../../dist/backend</BaseOutputPath>
+        <EnableBaseIntermediateOutputPathMismatchWarning>false</EnableBaseIntermediateOutputPathMismatchWarning>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <IntermediateOutputPath>$(BaseIntermediateOutputPath)/$(MSBuildProjectName)/obj</IntermediateOutputPath>
+        <MSBuildProjectExtensionsPath>$(BaseIntermediateOutputPath)/$(MSBuildProjectName)/obj</MSBuildProjectExtensionsPath>
+        <OutputPath>$(BaseOutputPath)/$(MSBuildProjectName)/bin</OutputPath>
+    </PropertyGroup>
 </Project>

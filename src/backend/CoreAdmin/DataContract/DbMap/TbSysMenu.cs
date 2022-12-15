@@ -14,53 +14,76 @@ public record TbSysMenu : FullTable, IFieldBitSet
     public virtual long BitSet { get; set; }
 
     /// <summary>
-    ///     子节点
+    ///     Gets or sets 子节点
     /// </summary>
+    /// <value>
+    ///     子节点
+    /// </value>
     [Navigate(nameof(ParentId))]
     public virtual List<TbSysMenu> Children { get; set; }
 
-
     /// <summary>
-    ///     菜单编码
+    ///     Gets or sets 菜单编码
     /// </summary>
+    /// <value>
+    ///     菜单编码
+    /// </value>
     public virtual string Code { get; set; }
 
     /// <summary>
-    ///     组件
+    ///     Gets or sets 组件
     /// </summary>
+    /// <value>
+    ///     组件
+    /// </value>
     public virtual string Component { get; set; }
 
-
     /// <summary>
-    ///     图标
+    ///     Gets or sets 图标
     /// </summary>
+    /// <value>
+    ///     图标
+    /// </value>
     public virtual string Icon { get; set; }
 
-
     /// <summary>
-    ///     父id
+    ///     Gets or sets 父id
     /// </summary>
+    /// <value>
+    ///     父id
+    /// </value>
     public virtual long ParentId { get; set; }
 
     /// <summary>
-    ///     菜单路径
+    ///     Gets or sets 菜单路径
     /// </summary>
+    /// <value>
+    ///     菜单路径
+    /// </value>
     public virtual string Path { get; set; }
 
     /// <summary>
-    ///     排序
+    ///     Gets or sets 排序
     /// </summary>
+    /// <value>
+    ///     排序
+    /// </value>
     public virtual int Sort { get; set; }
 
     /// <summary>
-    ///     菜单标题
+    ///     Gets or sets 菜单标题
     /// </summary>
+    /// <value>
+    ///     菜单标题
+    /// </value>
     public virtual string Title { get; set; }
 
-
     /// <summary>
-    ///     菜单类型
+    ///     Gets or sets 菜单类型
     /// </summary>
+    /// <value>
+    ///     菜单类型
+    /// </value>
     [Column(CanUpdate = false)]
     public virtual Enums.MenuTypes Type { get; set; }
 }

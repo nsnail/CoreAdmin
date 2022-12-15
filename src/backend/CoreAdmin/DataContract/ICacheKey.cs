@@ -6,7 +6,10 @@ namespace CoreAdmin.DataContract;
 public interface ICacheKey
 {
     /// <summary>
-    ///     缓存键
+    ///     Gets or sets 缓存键
     /// </summary>
+    /// <value>
+    ///     缓存键
+    /// </value>
     string CacheKey { get; set; }
 }

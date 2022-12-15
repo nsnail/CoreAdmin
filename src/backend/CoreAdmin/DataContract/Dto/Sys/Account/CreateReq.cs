@@ -14,33 +14,37 @@ public record CreateReq : TbSysUser
 {
     private readonly SecretOptions _secretOptions;
 
-    /// <inheritdoc cref="TbSysUser.Password" />
-    [RequiredField]
-    public new string Password { get; set; }
-
+    /// <inheritdoc />
+    public CreateReq()
+    {
+        _secretOptions = App.GetOptions<SecretOptions>();
+    }
 
     /// <summary>
-    ///     密码原文
+    ///     Gets 密码原文
     /// </summary>
+    /// <value>
+    ///     密码原文
+    /// </value>
     [RegularExpression(Strings.REGEX_PASSWORD, ErrorMessage = Strings.MSG_PASSWORD_STRONG)]
     [JsonIgnore]
     public virtual string PasswordOrigin => Password?.AesDe(_secretOptions.SecretKeyA);
+
+    /// <inheritdoc cref="TbSysUser.Password" />
+    [RequiredField]
+    public new string Password { get; set; }
 
     /// <inheritdoc cref="TbSysUser.UserName" />
     [JsonIgnore(Condition = JsonIgnoreCondition.Never)]
     [RequiredField]
     public override string UserName { get; set; }
 
-
     /// <summary>
-    ///     短信验证码信息
+    ///     Gets or sets 短信验证码信息
     /// </summary>
+    /// <value>
+    ///     短信验证码信息
+    /// </value>
     [RequiredField]
     public VerifySmsCodeReq VerifySmsCodeReq { get; set; }
-
-    /// <inheritdoc />
-    public CreateReq()
-    {
-        _secretOptions = App.GetOptions<SecretOptions>();
-    }
 }

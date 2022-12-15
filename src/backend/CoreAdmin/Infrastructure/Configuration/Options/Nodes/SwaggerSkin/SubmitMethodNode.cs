@@ -8,37 +8,51 @@ public enum SubmitMethodNode
     /// <summary>
     ///     Get
     /// </summary>
-    Get,
+    Get
+
+   ,
 
     /// <summary>
     ///     Put
     /// </summary>
-    Put,
+    Put
+
+   ,
 
     /// <summary>
     ///     Post
     /// </summary>
-    Post,
+    Post
+
+   ,
 
     /// <summary>
     ///     Delete
     /// </summary>
-    Delete,
+    Delete
+
+   ,
 
     /// <summary>
     ///     Options
     /// </summary>
-    Options,
+    Options
+
+   ,
 
     /// <summary>
     ///     Head
     /// </summary>
-    Head,
+    Head
+
+   ,
 
     /// <summary>
     ///     Patch
     /// </summary>
-    Patch,
+    Patch
+
+   ,
 
     /// <summary>
     ///     Trace

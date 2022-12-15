@@ -8,7 +8,9 @@ public enum ModelRenderingNode
     /// <summary>
     ///     示例
     /// </summary>
-    Example,
+    Example
+
+   ,
 
     /// <summary>
     ///     模型

@@ -1,5 +1,7 @@
 // ReSharper disable ContextualLoggerProblem
 
+#pragma warning disable SA1402
+
 using CoreAdmin.DataContract.DbMap.Dependency;
 using CoreAdmin.Repository;
 using Furion.DynamicApiController;
@@ -13,11 +15,7 @@ public abstract class ApiBase<TLogger, TTable> : ApiBase<TLogger>
     where TTable : DataContract.DataContract, ITable, new()
 {
     /// <summary>
-    ///     默认仓储
-    /// </summary>
-    protected Repository<TTable> Repository { get; }
-
-    /// <summary>
+    ///     Initializes a new instance of the <see cref="ApiBase{TLogger, TTable}" /> class.
     ///     Api Controller 基类
     /// </summary>
     protected ApiBase()
@@ -25,12 +23,20 @@ public abstract class ApiBase<TLogger, TTable> : ApiBase<TLogger>
         Repository = App.GetService<Repository<TTable>>();
     }
 
-    /// <param name="logger"></param>
-    /// <param name="repository"></param>
-    protected ApiBase(ILogger<TLogger> logger, Repository<TTable> repository) : base(logger)
+    /// <inheritdoc />
+    protected ApiBase(ILogger<TLogger> logger, Repository<TTable> repository) //
+        : base(logger)
     {
         Repository = repository;
     }
+
+    /// <summary>
+    ///     Gets 默认仓储
+    /// </summary>
+    /// <value>
+    ///     默认仓储
+    /// </value>
+    protected Repository<TTable> Repository { get; }
 }
 
 /// <summary>
@@ -39,11 +45,7 @@ public abstract class ApiBase<TLogger, TTable> : ApiBase<TLogger>
 public abstract class ApiBase<T> : IDynamicApiController
 {
     /// <summary>
-    ///     日志记录器
-    /// </summary>
-    protected ILogger<T> Logger { get; }
-
-    /// <summary>
+    ///     Initializes a new instance of the <see cref="ApiBase{T}" /> class.
     ///     Api Controller 基类
     /// </summary>
     protected ApiBase()
@@ -51,9 +53,19 @@ public abstract class ApiBase<T> : IDynamicApiController
         Logger = App.GetService<ILogger<T>>();
     }
 
-    /// <param name="logger"></param>
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="ApiBase{T}" /> class.
+    /// </summary>
     protected ApiBase(ILogger<T> logger)
     {
         Logger = logger;
     }
+
+    /// <summary>
+    ///     Gets 日志记录器
+    /// </summary>
+    /// <value>
+    ///     日志记录器
+    /// </value>
+    protected ILogger<T> Logger { get; }
 }

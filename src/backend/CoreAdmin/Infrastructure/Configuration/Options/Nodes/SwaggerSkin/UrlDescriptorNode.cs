@@ -6,12 +6,18 @@ namespace CoreAdmin.Infrastructure.Configuration.Options.Nodes.SwaggerSkin;
 public record UrlDescriptorNode
 {
     /// <summary>
-    ///     名称
+    ///     Gets or sets 名称
     /// </summary>
+    /// <value>
+    ///     名称
+    /// </value>
     public string Name { get; set; }
 
     /// <summary>
-    ///     url
+    ///     Gets or sets url
     /// </summary>
+    /// <value>
+    ///     Url
+    /// </value>
     public string Url { get; set; }
 }

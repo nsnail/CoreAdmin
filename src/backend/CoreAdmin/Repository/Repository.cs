@@ -11,21 +11,23 @@ public class Repository<TTable> : DefaultRepository<TTable, long>, IRepository<T
     where TTable : class, ITable, new()
 {
     /// <inheritdoc />
+    public Repository(IFreeSql fsql) //
+        : base(fsql) { }
+
+    /// <inheritdoc />
+    public Repository(IFreeSql fsql, Expression<Func<TTable, bool>> filter) //
+        : base(fsql, filter) { }
+
+    /// <inheritdoc />
+    protected Repository(IFreeSql fsql, UnitOfWorkManager uowManger) //
+        : base(fsql, uowManger) { }
+
+    /// <inheritdoc />
     public ContextUser ContextUser { get; set; }
 
     /// <inheritdoc />
-    protected Repository(IFreeSql fsql, UnitOfWorkManager uowManger) : base(fsql, uowManger) { }
-
-    /// <inheritdoc />
-    public Repository(IFreeSql fsql) : base(fsql) { }
-
-    /// <inheritdoc />
-    public Repository(IFreeSql fsql, Expression<Func<TTable, bool>> filter) : base(fsql, filter) { }
-
-
-    /// <inheritdoc />
-    public virtual async Task<bool> DeleteRecursiveAsync(Expression<Func<TTable, bool>> exp
-                                                       , params string[]                disableGlobalFilterNames)
+    public virtual async Task<bool> DeleteRecursiveAsync( //
+        Expression<Func<TTable, bool>> exp, params string[] disableGlobalFilterNames)
     {
         await Select.Where(exp)
                     .DisableGlobalFilter(disableGlobalFilterNames)
@@ -54,7 +56,14 @@ public class Repository<TTable> : DefaultRepository<TTable, long>, IRepository<T
         return Select.Where(exp).ToOneAsync();
     }
 
-    public virtual async Task<(List<TTable> list, long total)> GetPagedListAsync(
+    /// <summary>
+    ///     获取分页列表
+    /// </summary>
+    /// <param name="dynamicFilterInfo">动态过滤器</param>
+    /// <param name="page">页码</param>
+    /// <param name="pageSize">页容量</param>
+    /// <returns>分页列表和总条数</returns>
+    public virtual async Task<(List<TTable> List, long Total)> GetPagedListAsync(
         DynamicFilterInfo dynamicFilterInfo, int page, int pageSize)
     {
         var list = await Select.WhereDynamicFilter(dynamicFilterInfo)
@@ -93,8 +102,8 @@ public class Repository<TTable> : DefaultRepository<TTable, long>, IRepository<T
     }
 
     /// <inheritdoc />
-    public virtual async Task<bool> SoftDeleteAsync(Expression<Func<TTable, bool>> exp
-                                                  , params string[]                disableGlobalFilterNames)
+    public virtual async Task<bool> SoftDeleteAsync( //
+        Expression<Func<TTable, bool>> exp, params string[] disableGlobalFilterNames)
     {
         await UpdateDiy
               .SetDto(new {
@@ -108,8 +117,8 @@ public class Repository<TTable> : DefaultRepository<TTable, long>, IRepository<T
     }
 
     /// <inheritdoc />
-    public virtual async Task<bool> SoftDeleteRecursiveAsync(Expression<Func<TTable, bool>> exp
-                                                           , params string[]                disableGlobalFilterNames)
+    public virtual async Task<bool> SoftDeleteRecursiveAsync( //
+        Expression<Func<TTable, bool>> exp, params string[] disableGlobalFilterNames)
     {
         await Select.Where(exp)
                     .DisableGlobalFilter(disableGlobalFilterNames)

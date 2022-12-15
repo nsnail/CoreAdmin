@@ -5,21 +5,29 @@ namespace CoreAdmin.DataContract.Dto;
 /// <summary>
 ///     RESTful 风格结果集
 /// </summary>
-/// <typeparam name="T"></typeparam>
 public record RestfulInfo<T> : DataContract
 {
     /// <summary>
-    ///     代码
+    ///     Gets or sets 代码
     /// </summary>
+    /// <value>
+    ///     代码
+    /// </value>
     public Enums.ErrorCodes Code { get; set; }
 
     /// <summary>
-    ///     数据
+    ///     Gets or sets 数据
     /// </summary>
+    /// <value>
+    ///     数据
+    /// </value>
     public T Data { get; set; }
 
     /// <summary>
-    ///     消息
+    ///     Gets or sets 消息
     /// </summary>
+    /// <value>
+    ///     消息
+    /// </value>
     public object Msg { get; set; }
 }

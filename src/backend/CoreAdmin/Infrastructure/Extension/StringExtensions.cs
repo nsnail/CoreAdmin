@@ -7,16 +7,14 @@ namespace CoreAdmin.Infrastructure.Extension;
 /// </summary>
 public static partial class StringExtensions
 {
-    [GeneratedRegex("Options$")]
-    private static partial Regex OptionsRegex();
-
     /// <summary>
     ///     去掉尾部字符串“Options”
     /// </summary>
-    /// <param name="me"></param>
-    /// <returns></returns>
     public static string TrimEndOptions(this string me)
     {
         return OptionsRegex().Replace(me, string.Empty);
     }
+
+    [GeneratedRegex("Options$")]
+    private static partial Regex OptionsRegex();
 }

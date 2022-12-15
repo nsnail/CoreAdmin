@@ -6,17 +6,26 @@ namespace CoreAdmin.DataContract.DbMap.Dependency;
 public interface IFieldUpdate
 {
     /// <summary>
-    ///     修改时间
+    ///     Gets or sets 修改时间
     /// </summary>
+    /// <value>
+    ///     修改时间
+    /// </value>
     DateTime? ModifiedTime { get; set; }
 
     /// <summary>
-    ///     修改者Id
+    ///     Gets or sets 修改者Id
     /// </summary>
+    /// <value>
+    ///     修改者Id
+    /// </value>
     long? ModifiedUserId { get; set; }
 
     /// <summary>
-    ///     修改者
+    ///     Gets or sets 修改者
     /// </summary>
+    /// <value>
+    ///     修改者
+    /// </value>
     string ModifiedUserName { get; set; }
 }

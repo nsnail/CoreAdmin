@@ -6,7 +6,10 @@ namespace CoreAdmin.DataContract.DbMap.Dependency;
 public interface IFieldDelete
 {
     /// <summary>
-    ///     是否删除
+    ///     Gets or sets a value indicating whether 是否删除
     /// </summary>
+    /// <value>
+    ///     A value indicating whether 是否删除
+    /// </value>
     bool IsDeleted { get; set; }
 }
