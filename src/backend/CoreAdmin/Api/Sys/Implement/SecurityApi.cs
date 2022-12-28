@@ -30,7 +30,9 @@ public class SecurityApi : ApiBase<ISecurityApi>, ISecurityApi, IScoped
     private readonly IFreeSql      _freeSql;
     private readonly SecretOptions _secretOptions;
 
-    /// <inheritdoc />
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="SecurityApi" /> class.
+    /// </summary>
     public SecurityApi(IDistributedCache cache, IOptions<SecretOptions> secretOptions, IFreeSql freeSql)
     {
         _cache         = cache;

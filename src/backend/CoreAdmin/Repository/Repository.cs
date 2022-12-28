@@ -10,15 +10,21 @@ namespace CoreAdmin.Repository;
 public class Repository<TTable> : DefaultRepository<TTable, long>, IRepository<TTable>
     where TTable : class, ITable, new()
 {
-    /// <inheritdoc />
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="Repository{TTable}" /> class.
+    /// </summary>
     public Repository(IFreeSql fsql) //
         : base(fsql) { }
 
-    /// <inheritdoc />
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="Repository{TTable}" /> class.
+    /// </summary>
     public Repository(IFreeSql fsql, Expression<Func<TTable, bool>> filter) //
         : base(fsql, filter) { }
 
-    /// <inheritdoc />
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="Repository{TTable}" /> class.
+    /// </summary>
     protected Repository(IFreeSql fsql, UnitOfWorkManager uowManger) //
         : base(fsql, uowManger) { }
 

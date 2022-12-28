@@ -23,7 +23,9 @@ public class RequestAuditEvent : IEventSubscriber, ISingleton, IDisposable
         _scope = serviceProvider.CreateScope();
     }
 
-    /// <inheritdoc />
+    /// <summary>
+    ///     Finalizes an instance of the <see cref="RequestAuditEvent" /> class.
+    /// </summary>
     ~RequestAuditEvent()
     {
         Dispose(false);

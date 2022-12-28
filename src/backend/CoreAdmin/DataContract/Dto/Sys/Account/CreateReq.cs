@@ -14,7 +14,9 @@ public record CreateReq : TbSysUser
 {
     private readonly SecretOptions _secretOptions;
 
-    /// <inheritdoc />
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="CreateReq" /> class.
+    /// </summary>
     public CreateReq()
     {
         _secretOptions = App.GetOptions<SecretOptions>();

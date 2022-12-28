@@ -23,7 +23,9 @@ public abstract class ApiBase<TLogger, TTable> : ApiBase<TLogger>
         Repository = App.GetService<Repository<TTable>>();
     }
 
-    /// <inheritdoc />
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="ApiBase{TLogger, TTable}" /> class.
+    /// </summary>
     protected ApiBase(ILogger<TLogger> logger, Repository<TTable> repository) //
         : base(logger)
     {

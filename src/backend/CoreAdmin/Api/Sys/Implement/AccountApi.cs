@@ -14,7 +14,9 @@ public class AccountApi : ApiBase<IAccountApi, TbSysUser>, IAccountApi
 {
     private readonly ISecurityApi _securityApi;
 
-    /// <inheritdoc />
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="AccountApi" /> class.
+    /// </summary>
     public AccountApi(ISecurityApi securityApi)
     {
         _securityApi = securityApi;

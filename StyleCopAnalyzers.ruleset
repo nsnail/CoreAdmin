@@ -193,7 +193,7 @@
         <Rule Id="SA1626" Action="Warning"/>          <!-- Single-line comments should not use documentation style slashes -->
         <Rule Id="SA1627" Action="Warning"/>          <!-- Documentation text should not be empty -->
         <Rule Id="SA1628" Action="Warning"/>          <!-- Documentation text should begin with a capital letter -->
-        <Rule Id="SA1629" Action="None"/>             <!-- Documentation text should end with a period -->
+        <Rule Id="SA1629" Action="None"/>          <!-- Documentation text should end with a period -->
         <Rule Id="SA1630" Action="Warning"/>          <!-- Documentation text should contain whitespace -->
         <Rule Id="SA1631" Action="Warning"/>          <!-- Documentation should meet character percentage -->
         <Rule Id="SA1632" Action="Warning"/>          <!-- Documentation text should meet minimum character length -->
@@ -212,7 +212,7 @@
         <Rule Id="SA1645" Action="Warning"/>          <!-- Included documentation file does not exist -->
         <Rule Id="SA1646" Action="Warning"/>          <!-- Included documentation XPath does not exist -->
         <Rule Id="SA1647" Action="Warning"/>          <!-- Include node does not contain valid file and path -->
-        <Rule Id="SA1648" Action="None"/>          <!-- Inheritdoc should be used with inheriting class -->
+        <Rule Id="SA1648" Action="Warning"/>          <!-- Inheritdoc should be used with inheriting class -->
         <Rule Id="SA1649" Action="Warning"/>          <!-- File name should match first type name -->
         <Rule Id="SA1650" Action="Warning"/>          <!-- Element documentation should be spelled correctly -->
         <Rule Id="SA1651" Action="Warning"/>          <!-- Do not use placeholder elements -->

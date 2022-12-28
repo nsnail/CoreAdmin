@@ -1,0 +1,19 @@
+{
+    "solution": "dot.sln",
+    "solutionFolder": null,
+    "mappings": {
+        "NSExt": "../../../../ForkedGitReps/ns-ext/src/NSExt.csproj"
+    },
+    "restore": [
+        {
+            "name": "dot",
+            "packages": [
+                {
+                    "packageName": "NSExt",
+                    "version": "1.0.9-alpha.0.5"
+                }
+            ]
+        }
+    ],
+    "removeProjects": true
+}

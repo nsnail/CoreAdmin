@@ -13,7 +13,9 @@ public class UserApi : ApiBase<IUserApi, TbSysUser>, IUserApi
 {
     private readonly Repository<TbSysMenu> _repMenu;
 
-    /// <inheritdoc />
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="UserApi" /> class.
+    /// </summary>
     public UserApi(Repository<TbSysMenu> repMenu)
     {
         _repMenu = repMenu;

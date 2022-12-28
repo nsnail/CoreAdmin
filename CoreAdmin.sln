@@ -21,6 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "meta", "meta", "{EFE42F6A-3
 		CodeCleanupOnSave.csx = CodeCleanupOnSave.csx
 		CodeQuality.props = CodeQuality.props
 		CoreAdmin.sln.DotSettings = CoreAdmin.sln.DotSettings
+		CoreAdmin.sln.DotSettings.user = CoreAdmin.sln.DotSettings.user
 		Directory.Build.props = Directory.Build.props
 		dotnet-tools.json = dotnet-tools.json
 		GenerateResx.targets = GenerateResx.targets
@@ -32,6 +33,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "meta", "meta", "{EFE42F6A-3
 		SafetyDelUnusedResx.ahk = SafetyDelUnusedResx.ahk
 		stylecop.json = stylecop.json
 		StyleCopAnalyzers.ruleset = StyleCopAnalyzers.ruleset
+		switch-nuget.cmd = switch-nuget.cmd
+		switch-project.cmd = switch-project.cmd
+		switcher.json = switcher.json
 	EndProjectSection
 EndProject
 Global
