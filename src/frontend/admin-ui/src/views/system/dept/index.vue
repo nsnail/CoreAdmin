@@ -17,13 +17,13 @@
 				<el-table-column type="selection" width="50"></el-table-column>
 				<el-table-column label="部门名称" prop="label" width="250"></el-table-column>
 				<el-table-column label="排序" prop="sort" width="150"></el-table-column>
-				<el-table-column label="状态" prop="status" width="150">
+				<el-table-column label="状态" prop="bitSet" width="150">
 					<template #default="scope">
-						<el-tag v-if="scope.row.status==1" type="success">启用</el-tag>
-						<el-tag v-if="scope.row.status==0" type="danger">停用</el-tag>
+						<el-tag v-if="scope.row.bitSet==1" type="success">启用</el-tag>
+						<el-tag v-if="scope.row.bitSet==0" type="danger">停用</el-tag>
 					</template>
 				</el-table-column>
-				<el-table-column label="创建时间" prop="date" width="180"></el-table-column>
+				<el-table-column label="创建时间" prop="createdTime" width="180"></el-table-column>
 				<el-table-column label="备注" prop="remark" min-width="300"></el-table-column>
 				<el-table-column label="操作" fixed="right" align="right" width="170">
 					<template #default="scope">
@@ -60,7 +60,7 @@
 				dialog: {
 					save: false
 				},
-				apiObj: this.$API.system.dept.list,
+				apiObj: this.$API.department.list,
 				selection: [],
 				search: {
 					keyword: null
@@ -92,8 +92,8 @@
 			//删除
 			async table_del(row){
 				var reqData = {id: row.id}
-				var res = await this.$API.demo.post.post(reqData);
-				if(res.code == 200){
+				var res = await this.$API.department.del.post(reqData);
+				if(res.code == 0){
 					this.$refs.table.refresh()
 					this.$message.success("删除成功")
 				}else{
@@ -104,11 +104,15 @@
 			async batch_del(){
 				this.$confirm(`确定删除选中的 ${this.selection.length} 项吗？如果删除项中含有子集将会被一并删除`, '提示', {
 					type: 'warning'
-				}).then(() => {
-					const loading = this.$loading();
-					this.$refs.table.refresh()
-					loading.close();
-					this.$message.success("操作成功")
+				}).then(async () => {
+					var reqData = {ids:this.selection.map(x=>x.id)}
+					var res = await this.$API.department.bulkDel.post(reqData);
+					if(res.code == 0){
+						this.$refs.table.refresh()
+						this.$message.success("删除成功")
+					}else{
+						this.$alert(res.message, "提示", {type: 'error'})
+					}
 				}).catch(() => {
 
 				})

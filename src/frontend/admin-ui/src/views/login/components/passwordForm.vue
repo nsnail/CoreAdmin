@@ -94,7 +94,8 @@ import {aesEncrypt} from "@/views/login/components/verifition/utils/ase";
 				//获取菜单
 				var menu = null
 				if(this.form.user == 'admin'){
-					menu = await this.$API.system.menu.myMenus.get()
+					//menu = await this.$API.system.menu.myMenus.get()
+					menu = await this.$API.user.getProfile.get()
 				}else{
 					menu = await this.$API.user.getProfile.get()
 				}

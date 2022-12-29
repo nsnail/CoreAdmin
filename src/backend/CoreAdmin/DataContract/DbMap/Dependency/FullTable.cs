@@ -15,53 +15,53 @@ public abstract record FullTable : DataContract, ITable, IFieldPrimary, IFieldAd
     [JsonIgnore]
     [Description(Strings.DSC_CREATED_TIME)]
     [Column(CanUpdate = false, ServerTime = DateTimeKind.Local)]
-    public DateTime CreatedTime { get; set; }
+    public virtual DateTime CreatedTime { get; set; }
 
     /// <inheritdoc />
     [JsonIgnore]
     [Description(Strings.DSC_CREATED_USER_ID)]
     [Column(CanUpdate = false)]
-    public long? CreatedUserId { get; set; }
+    public virtual long? CreatedUserId { get; set; }
 
     /// <inheritdoc />
     [JsonIgnore]
     [Description(Strings.DSC_CREATED_USER_NAME)]
     [Column(CanUpdate = false)]
-    public string CreatedUserName { get; set; }
+    public virtual string CreatedUserName { get; set; }
 
     /// <inheritdoc />
     [JsonIgnore]
     [Description(Strings.DSC_ID)]
     [Column(IsIdentity = false, IsPrimary = true)]
     [Snowflake]
-    public long Id { get; set; }
+    public virtual long Id { get; set; }
 
     /// <inheritdoc />
     [JsonIgnore]
     [Description(Strings.DSC_IS_DELETED)]
-    public bool IsDeleted { get; set; }
+    public virtual bool IsDeleted { get; set; }
 
     /// <inheritdoc />
     [JsonIgnore]
     [Description(Strings.DESC_MODIFIED_TIME)]
     [Column(CanInsert = false, ServerTime = DateTimeKind.Local)]
-    public DateTime? ModifiedTime { get; set; }
+    public virtual DateTime? ModifiedTime { get; set; }
 
     /// <inheritdoc />
     [JsonIgnore]
     [Description(Strings.DSC_MODIFIED_USER_ID)]
     [Column(CanInsert = false)]
-    public long? ModifiedUserId { get; set; }
+    public virtual long? ModifiedUserId { get; set; }
 
     /// <inheritdoc />
     [JsonIgnore]
     [Description(Strings.DSC_MODIFIED_USER_NAME)]
     [Column(CanInsert = false)]
-    public string ModifiedUserName { get; set; }
+    public virtual string ModifiedUserName { get; set; }
 
     /// <inheritdoc />
     [JsonIgnore]
     [Description(Strings.DSC_VERSION)]
     [Column(IsVersion = true)]
-    public long Version { get; set; }
+    public virtual long Version { get; set; }
 }

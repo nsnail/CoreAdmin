@@ -1,36 +1,42 @@
 [
-  {
-    "label": "华南分部",
-    "remark": "",
-    "sort": 1,
-    "children": [
-      {
-        "label": "售前客服部",
+    {
+        "label": "华南分部",
         "remark": "",
-        "sort": 2
-      },
-      {
-        "label": "技术研发部",
-        "remark": "软件开发&测试",
-        "sort": 3
-      }
-    ]
-  },
-  {
-    "label": "华东分部",
-    "remark": "",
-    "sort": 4,
-    "children": [
-      {
-        "label": "售前客服部",
+        "sort": 1,
+        "bitSet": 1,
+        "children": [
+            {
+                "label": "华南售前",
+                "remark": "",
+                "sort": 2,
+                "bitSet": 1,
+            },
+            {
+                "label": "华南技术",
+                "remark": "软件开发&测试",
+                "sort": 3,
+                "bitSet": 1,
+            }
+        ]
+    },
+    {
+        "label": "华东分部",
         "remark": "",
-        "sort": 5
-      },
-      {
-        "label": "技术研发部",
-        "remark": "",
-        "sort": 6
-      }
-    ]
-  }
+        "sort": 4,
+        "bitSet": 1,
+        "children": [
+            {
+                "label": "华东售前",
+                "remark": "",
+                "sort": 5,
+                "bitSet": 1,
+            },
+            {
+                "label": "华东开发",
+                "remark": "",
+                "sort": 6,
+                "bitSet": 1,
+            }
+        ]
+    }
 ]

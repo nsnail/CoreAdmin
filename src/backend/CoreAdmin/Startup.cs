@@ -82,9 +82,11 @@ public class Startup : AppStartup
                 .AddRemoteRequest()                           //       远程请求
                 .AddControllers()                             //       注册控制器
                 .AddInjectWithUnifyResult<ApiResultHandler>() //       api响应结果模板
-                .AddJsonOptions(options =>
-                                    options.JsonSerializerOptions.CopyFrom(default(JsonSerializerOptions)
-                                                                               .NewJsonSerializerOptions()))
+                .AddJsonOptions(options => {
+                    options.JsonSerializerOptions.CopyFrom(default(JsonSerializerOptions).NewJsonSerializerOptions());
+                    options.JsonSerializerOptions.Converters.AddDateTimeTypeConverters("yyyy-MM-dd HH:mm:ss");
+                    options.JsonSerializerOptions.NumberHandling = JsonNumberHandling.AllowReadingFromString;
+                })
 
             //
             //                                    json序列化配置

@@ -6,6 +6,7 @@ using CoreAdmin.Infrastructure.Extension;
 using FreeSql;
 using FreeSql.Aop;
 using FreeSql.DataAnnotations;
+using Newtonsoft.Json;
 using NSExt.Extensions;
 using Yitter.IdGenerator;
 using DataType = FreeSql.DataType;
@@ -62,8 +63,8 @@ public class FreeSqlHelper
                 continue;
             }
 
-            // TODO  #error 这里被表的JsonIgnoreAttribute 挡住了 ， 换成newtonsoft ？
-            dynamic entities = File.ReadAllText(path).Object(typeof(List<>).MakeGenericType(entityType));
+            dynamic entities = JsonConvert.DeserializeObject( //
+                File.ReadAllText(path), typeof(List<>).MakeGenericType(entityType));
 
             // 如果表存在数据，跳过
             var select = typeof(IFreeSql).GetMethod(nameof(freeSql.Select), 1, Type.EmptyTypes)

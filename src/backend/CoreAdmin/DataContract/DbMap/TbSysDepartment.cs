@@ -10,7 +10,7 @@ namespace CoreAdmin.DataContract.DbMap;
 public record TbSysDepartment : FullTable, IFieldBitSet
 {
     /// <inheritdoc />
-    [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
+    [JsonIgnore]
     public virtual long BitSet { get; set; }
 
     /// <summary>
@@ -20,7 +20,7 @@ public record TbSysDepartment : FullTable, IFieldBitSet
     ///     子节点
     /// </value>
     [Navigate(nameof(ParentId))]
-    [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
+    [JsonIgnore]
     public virtual List<TbSysDepartment> Children { get; set; }
 
     /// <summary>
@@ -29,7 +29,7 @@ public record TbSysDepartment : FullTable, IFieldBitSet
     /// <value>
     ///     部门名称
     /// </value>
-    [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
+    [JsonIgnore]
     public virtual string Label { get; set; }
 
     /// <summary>
@@ -38,7 +38,7 @@ public record TbSysDepartment : FullTable, IFieldBitSet
     /// <value>
     ///     父id
     /// </value>
-    [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
+    [JsonIgnore]
     public virtual long ParentId { get; set; }
 
     /// <summary>
@@ -47,8 +47,8 @@ public record TbSysDepartment : FullTable, IFieldBitSet
     /// <value>
     ///     部门描述
     /// </value>
-    [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
-    public string Remark { get; set; }
+    [JsonIgnore]
+    public virtual string Remark { get; set; }
 
     /// <summary>
     ///     Gets or sets 排序
@@ -56,6 +56,6 @@ public record TbSysDepartment : FullTable, IFieldBitSet
     /// <value>
     ///     排序
     /// </value>
-    [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
+    [JsonIgnore]
     public virtual int Sort { get; set; }
 }
