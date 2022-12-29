@@ -105,6 +105,7 @@
 				this.$confirm(`确定删除选中的 ${this.selection.length} 项吗？如果删除项中含有子集将会被一并删除`, '提示', {
 					type: 'warning'
 				}).then(async () => {
+					const loading = this.$loading();
 					var reqData = {ids:this.selection.map(x=>x.id)}
 					var res = await this.$API.department.bulkDel.post(reqData);
 					if(res.code == 0){
@@ -113,6 +114,7 @@
 					}else{
 						this.$alert(res.message, "提示", {type: 'error'})
 					}
+					loading.close();
 				}).catch(() => {
 
 				})

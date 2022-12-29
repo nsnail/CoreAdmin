@@ -8,7 +8,7 @@ var path = Directory.GetFiles(@".idea", "workspace.xml", SearchOption.AllDirecto
 """;
         var content = File.ReadAllText(path);
         if(content.Contains("rider.code.cleanup.on.save")){
-                Console.WriteLine("alreay added");
+                Console.WriteLine("already added");
                 return;
         }
         content = content.Replace(findStr, replaceStr);

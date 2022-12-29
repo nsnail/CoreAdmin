@@ -120,11 +120,11 @@
 			},
 			//加载树数据
 			async getGroup(){
-				var res = await this.$API.system.role.list.get();
-				this.groups = res.data.rows;
+				var res = await this.$API.role.list.post();
+				this.groups = res.data;
 			},
 			async getDept(){
-				var res = await this.$API.system.dept.list.get();
+				var res = await this.$API.department.list.post();
 				this.depts = res.data;
 			},
 			//表单提交方法

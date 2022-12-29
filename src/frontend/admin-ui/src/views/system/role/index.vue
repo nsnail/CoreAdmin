@@ -14,18 +14,19 @@
 			</div>
 		</el-header>
 		<el-main class="nopadding">
-			<scTable ref="table" :apiObj="apiObj" row-key="id" @selection-change="selectionChange" stripe>
+			<scTable ref="table" :apiObj="apiObj" row-key="id" @selection-change="selectionChange" stripe hidePagination>
 				<el-table-column type="selection" width="50"></el-table-column>
 				<el-table-column label="#" type="index" width="50"></el-table-column>
-				<el-table-column label="角色名称" prop="label" width="150"></el-table-column>
+				<el-table-column label="角色名称" prop="roleName" width="150"></el-table-column>
 				<el-table-column label="别名" prop="alias" width="200"></el-table-column>
 				<el-table-column label="排序" prop="sort" width="80"></el-table-column>
-				<el-table-column label="状态" prop="status" width="80">
+				<el-table-column label="状态" prop="bitSet" width="80">
 					<template #default="scope">
-						<el-switch v-model="scope.row.status" @change="changeSwitch($event, scope.row)" :loading="scope.row.$switch_status" active-value="1" inactive-value="0"></el-switch>
+						<el-tag v-if="scope.row.bitSet==1" type="success">启用</el-tag>
+						<el-tag v-if="scope.row.bitSet==0" type="danger">停用</el-tag>
 					</template>
 				</el-table-column>
-				<el-table-column label="创建时间" prop="date" width="180"></el-table-column>
+				<el-table-column label="创建时间" prop="createdTime" width="180"></el-table-column>
 				<el-table-column label="备注" prop="remark" min-width="150"></el-table-column>
 				<el-table-column label="操作" fixed="right" align="right" width="170">
 					<template #default="scope">
@@ -67,7 +68,7 @@
 					save: false,
 					permission: false
 				},
-				apiObj: this.$API.system.role.list,
+				apiObj: this.$API.role.list,
 				selection: [],
 				search: {
 					keyword: null
@@ -106,8 +107,8 @@
 			//删除
 			async table_del(row){
 				var reqData = {id: row.id}
-				var res = await this.$API.demo.post.post(reqData);
-				if(res.code == 200){
+				var res = await this.$API.role.del.post(reqData);
+				if(res.code == 0){
 					this.$refs.table.refresh()
 					this.$message.success("删除成功")
 				}else{
@@ -118,11 +119,17 @@
 			async batch_del(){
 				this.$confirm(`确定删除选中的 ${this.selection.length} 项吗？如果删除项中含有子集将会被一并删除`, '提示', {
 					type: 'warning'
-				}).then(() => {
+				}).then(async () => {
 					const loading = this.$loading();
-					this.$refs.table.refresh()
+					var reqData = {ids:this.selection.map(x=>x.id)}
+					var res = await this.$API.role.bulkDel.post(reqData);
+					if(res.code == 0){
+						this.$refs.table.refresh()
+						this.$message.success("删除成功")
+					}else{
+						this.$alert(res.message, "提示", {type: 'error'})
+					}
 					loading.close();
-					this.$message.success("操作成功")
 				}).catch(() => {
 
 				})
@@ -130,16 +137,6 @@
 			//表格选择后回调事件
 			selectionChange(selection){
 				this.selection = selection;
-			},
-			//表格内开关
-			changeSwitch(val, row){
-				row.status = row.status == '1'?'0':'1'
-				row.$switch_status = true;
-				setTimeout(()=>{
-					delete row.$switch_status;
-					row.status = val;
-					this.$message.success("操作成功")
-				}, 500)
 			},
 			//搜索
 			upsearch(){

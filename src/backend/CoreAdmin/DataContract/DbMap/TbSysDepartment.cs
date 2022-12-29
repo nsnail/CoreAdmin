@@ -7,7 +7,7 @@ namespace CoreAdmin.DataContract.DbMap;
 ///     部门表
 /// </summary>
 [Table]
-public record TbSysDepartment : FullTable, IFieldBitSet
+public record TbSysDepartment : FullTable, IFieldBitSet, IFieldSort
 {
     /// <inheritdoc />
     [JsonIgnore]
@@ -50,12 +50,7 @@ public record TbSysDepartment : FullTable, IFieldBitSet
     [JsonIgnore]
     public virtual string Remark { get; set; }
 
-    /// <summary>
-    ///     Gets or sets 排序
-    /// </summary>
-    /// <value>
-    ///     排序
-    /// </value>
+    /// <inheritdoc />
     [JsonIgnore]
     public virtual int Sort { get; set; }
 }
