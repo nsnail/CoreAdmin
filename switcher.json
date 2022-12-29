@@ -1,8 +1,8 @@
 {
-  "solution": "CoreAdmin.sln",
-  "solutionFolder": null,
-  "mappings": {
-    "NSExt": "../../../../ForkedGitReps/ns-ext/src/NSExt.csproj"
-  },
-  "removeProjects": true
+    "solution": "CoreAdmin.sln",
+    "solutionFolder": null,
+    "mappings": {
+        "NSExt": "../../../../ForkedGitReps/ns-ext/src/NSExt.csproj"
+    },
+    "removeProjects": true
 }

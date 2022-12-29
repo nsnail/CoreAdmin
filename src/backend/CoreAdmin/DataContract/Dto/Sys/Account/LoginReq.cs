@@ -6,7 +6,7 @@ namespace CoreAdmin.DataContract.Dto.Sys.Account;
 /// <summary>
 ///     登录请求
 /// </summary>
-public record  LoginReq : TbSysUser
+public record LoginReq : TbSysUser
 {
     /// <inheritdoc cref="TbSysUser.Password" />
     [RequiredField]

@@ -3,7 +3,9 @@ using Mapster;
 
 namespace CoreAdmin.DataContract.Dto.Sys.Department;
 
-/// <inheritdoc />
+/// <summary>
+///     响应：查询部门
+/// </summary>
 public record QueryDepartmentsRsp : TbSysDepartment, IRegister
 {
     /// <inheritdoc />
@@ -25,10 +27,6 @@ public record QueryDepartmentsRsp : TbSysDepartment, IRegister
 
     /// <inheritdoc />
     [JsonIgnore(Condition = JsonIgnoreCondition.Never)]
-    public override long Version { get; set; }
-
-    /// <inheritdoc />
-    [JsonIgnore(Condition = JsonIgnoreCondition.Never)]
     public override long Id { get; set; }
 
     /// <inheritdoc />
@@ -46,6 +44,10 @@ public record QueryDepartmentsRsp : TbSysDepartment, IRegister
     /// <inheritdoc />
     [JsonIgnore(Condition = JsonIgnoreCondition.Never)]
     public override int Sort { get; set; }
+
+    /// <inheritdoc />
+    [JsonIgnore(Condition = JsonIgnoreCondition.Never)]
+    public override long Version { get; set; }
 
     /// <inheritdoc />
     public void Register(TypeAdapterConfig config)

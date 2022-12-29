@@ -1,9 +1,9 @@
 {
-  "Database": {
-    "IsMultiTenant": true,
-    "DbCreationFile": null,
-    "DbType": "Sqlite",
-    "IsSyncStructure": true,
-    "ConnStr": "Data Source=|DataDirectory|\\.data\\core-admin.db; Pooling=true;Min Pool Size=1"
-  }
+    "Database": {
+        "IsMultiTenant": true,
+        "DbCreationFile": null,
+        "DbType": "Sqlite",
+        "IsSyncStructure": true,
+        "ConnStr": "Data Source=|DataDirectory|\\.data\\core-admin.db; Pooling=true;Min Pool Size=1"
+    }
 }

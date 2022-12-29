@@ -92,15 +92,6 @@ public partial class SwaggerSkinMiddleware
     private static partial Regex MyRegex2();
 
     /// <summary>
-    ///     url 重定向
-    /// </summary>
-    private static void RespondWithRedirect(HttpResponse response, string location)
-    {
-        response.StatusCode          = 301;
-        response.Headers["Location"] = location;
-    }
-
-    /// <summary>
     ///     创建静态文件处理中间件
     /// </summary>
     private StaticFileMiddleware CreateStaticFileMiddleware()
