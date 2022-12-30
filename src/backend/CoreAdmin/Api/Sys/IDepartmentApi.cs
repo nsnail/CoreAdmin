@@ -1,3 +1,4 @@
+using CoreAdmin.DataContract.Dto.Pub;
 using CoreAdmin.DataContract.Dto.Sys.Department;
 
 namespace CoreAdmin.Api.Sys;
@@ -10,25 +11,25 @@ public interface IDepartmentApi
     /// <summary>
     ///     增加部门
     /// </summary>
-    Task Add(AddDepartmentsReq req);
+    Task Add(AddDepartmentReq req);
 
     /// <summary>
     ///     批量删除
     /// </summary>
-    Task<int> BulkDel(BulkDelDepartmentsReq req);
+    Task<int> BulkDel(BulkDelReq req);
 
     /// <summary>
     ///     删除部门
     /// </summary>
-    Task<int> Del(DelDepartmentsReq req);
+    Task<int> Del(DelReq req);
 
     /// <summary>
     ///     部门列表
     /// </summary>
-    Task<List<QueryDepartmentsRsp>> List();
+    Task<List<QueryDepartmentRsp>> List();
 
     /// <summary>
     ///     更新部门
     /// </summary>
-    Task Update(UpdateDepartmentsReq req);
+    Task Update(UpdateDepartmentReq req);
 }

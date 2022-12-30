@@ -6,10 +6,7 @@ namespace CoreAdmin.DataContract.DbMap.Dependency;
 public interface IFieldVersion
 {
     /// <summary>
-    ///     Gets or sets 数据版本
-    /// </summary>
-    /// <value>
     ///     数据版本
-    /// </value>
+    /// </summary>
     long Version { get; set; }
 }

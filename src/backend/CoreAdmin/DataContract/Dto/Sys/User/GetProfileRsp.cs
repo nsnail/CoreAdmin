@@ -5,74 +5,52 @@ using Mapster;
 
 namespace CoreAdmin.DataContract.Dto.Sys.User;
 
-/// <inheritdoc />
-public record GetProfileRsp : DataContract
+/// <summary>
+///     响应：个人信息
+/// </summary>
+public record GetProfileRsp : DataAbstraction
 {
     /// <summary>
-    ///     Gets or sets 菜单
-    /// </summary>
-    /// <value>
     ///     菜单
-    /// </value>
+    /// </summary>
     public List<MenuInfo> Menu { get; set; }
 
     /// <summary>
-    ///     Gets or sets 权限
-    /// </summary>
-    /// <value>
     ///     权限
-    /// </value>
+    /// </summary>
     public List<string> Permissions { get; set; }
 
     /// <inheritdoc />
     public record MenuInfo : IRegister
     {
         /// <summary>
-        ///     Gets or sets 子节点
-        /// </summary>
-        /// <value>
         ///     子节点
-        /// </value>
+        /// </summary>
         public List<MenuInfo> Children { get; set; }
 
         /// <summary>
-        ///     Gets or sets 组件
-        /// </summary>
-        /// <value>
         ///     组件
-        /// </value>
+        /// </summary>
         public string Component { get; set; }
 
         /// <summary>
-        ///     Gets or sets 元数据
-        /// </summary>
-        /// <value>
         ///     元数据
-        /// </value>
+        /// </summary>
         public MetaInfo Meta { get; set; }
 
         /// <summary>
-        ///     Gets or sets 权限编码
-        /// </summary>
-        /// <value>
         ///     权限编码
-        /// </value>
+        /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        ///     Gets or sets 菜单访问地址
-        /// </summary>
-        /// <value>
         ///     菜单访问地址
-        /// </value>
+        /// </summary>
         public string Path { get; set; }
 
         /// <summary>
-        ///     Gets or sets 权限类型
-        /// </summary>
-        /// <value>
         ///     权限类型
-        /// </value>
+        /// </summary>
         public Enums.PermissionTypes Type { get; set; }
 
         /// <inheritdoc />
@@ -87,27 +65,18 @@ public record GetProfileRsp : DataContract
         public record MetaInfo : IRegister
         {
             /// <summary>
-            ///     Gets or sets 图标
-            /// </summary>
-            /// <value>
             ///     图标
-            /// </value>
+            /// </summary>
             public string Icon { get; set; }
 
             /// <summary>
-            ///     Gets or sets 标题
-            /// </summary>
-            /// <value>
             ///     标题
-            /// </value>
+            /// </summary>
             public string Title { get; set; }
 
             /// <summary>
-            ///     Gets or sets 类型
-            /// </summary>
-            /// <value>
             ///     类型
-            /// </value>
+            /// </summary>
             public string Type { get; set; }
 
             /// <inheritdoc />

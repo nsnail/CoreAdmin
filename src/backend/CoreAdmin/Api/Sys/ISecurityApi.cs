@@ -1,5 +1,5 @@
 using CoreAdmin.DataContract.Dto.Sys.Security;
-using CoreAdmin.Infrastructure.Util;
+using CoreAdmin.Infrastructure.Utils;
 
 namespace CoreAdmin.Api.Sys;
 
@@ -16,7 +16,7 @@ public interface ISecurityApi
     /// <summary>
     ///     发送短信验证码
     /// </summary>
-    Task SendSmsCode(ISmsSender smsSender, SendSmsCodeReq req);
+    Task SendSmsCode(SmsSender smsSender, SendSmsCodeReq req);
 
     /// <summary>
     ///     完成人机校验

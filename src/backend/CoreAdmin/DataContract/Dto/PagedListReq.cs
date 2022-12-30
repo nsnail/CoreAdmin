@@ -3,39 +3,27 @@ using FreeSql.Internal.Model;
 namespace CoreAdmin.DataContract.Dto;
 
 /// <summary>
-///     分页列表请求
+///     请求：分页列表
 /// </summary>
-public record PagedListReq<T> : DataContract
+public record PagedListReq<T> : DataAbstraction
 {
     /// <summary>
-    ///     Gets or sets 动态查询条件
-    /// </summary>
-    /// <value>
     ///     动态查询条件
-    /// </value>
+    /// </summary>
     public DynamicFilterInfo DynamicFilter { get; set; }
 
     /// <summary>
-    ///     Gets or sets 查询条件
-    /// </summary>
-    /// <value>
     ///     查询条件
-    /// </value>
+    /// </summary>
     public T Filter { get; set; }
 
     /// <summary>
-    ///     Gets or sets 当前页码
-    /// </summary>
-    /// <value>
     ///     当前页码
-    /// </value>
+    /// </summary>
     public int Page { get; set; }
 
     /// <summary>
-    ///     Gets or sets 页容量
-    /// </summary>
-    /// <value>
     ///     页容量
-    /// </value>
+    /// </summary>
     public int PageSize { get; set; }
 }

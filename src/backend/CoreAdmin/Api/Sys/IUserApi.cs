@@ -16,5 +16,5 @@ public interface IUserApi
     /// <summary>
     ///     分页获取用户列表
     /// </summary>
-    Task<PagedListRsp<UserRsp>> QueryUsers(PagedListReq<QueryUsersReq> req);
+    Task<PagedListRsp<QueryUserRsp>> QueryUsers(PagedListReq<QueryUsersReq> req);
 }

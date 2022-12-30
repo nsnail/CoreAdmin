@@ -38,19 +38,19 @@ public class AccountApi : ApiBase<IAccountApi, TbSysUser>, IAccountApi
 
     /// <inheritdoc />
     [AllowAnonymous]
-    public async Task Create(CreateReq req)
+    public async Task Create(CreateAccountReq accountReq)
     {
         //短信验证码
-        var checkResult = await _securityApi.VerifySmsCode(req.VerifySmsCodeReq);
+        var checkResult = await _securityApi.VerifySmsCode(accountReq.VerifySmsCodeReq);
         if (!checkResult) {
             throw Oops.Oh(Enums.ErrorCodes.InvalidInput, Strings.MSG_SMSCODE_WRONG);
         }
 
         var tbUser = new TbSysUser {
-                                       Mobile   = req.VerifySmsCodeReq.Mobile
+                                       Mobile   = accountReq.VerifySmsCodeReq.Mobile
                                      , Token    = Guid.NewGuid()
-                                     , UserName = req.UserName
-                                     , Password = req.Password.Pwd().Guid()
+                                     , UserName = accountReq.UserName
+                                     , Password = accountReq.Password.Pwd().Guid()
                                    };
         await Repository.InsertAsync(tbUser);
     }

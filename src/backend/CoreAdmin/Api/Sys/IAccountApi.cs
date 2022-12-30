@@ -20,7 +20,7 @@ public interface IAccountApi
     /// <summary>
     ///     创建帐号
     /// </summary>
-    Task Create(CreateReq req);
+    Task Create(CreateAccountReq accountReq);
 
     /// <summary>
     ///     帐号登录

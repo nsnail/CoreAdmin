@@ -11,11 +11,8 @@ public interface IRepository<TTable> : IBaseRepository<TTable>
     where TTable : class
 {
     /// <summary>
-    ///     Gets or sets 当前上下文关联的用户
-    /// </summary>
-    /// <value>
     ///     当前上下文关联的用户
-    /// </value>
+    /// </summary>
     ContextUser ContextUser { get; set; }
 
     /// <summary>

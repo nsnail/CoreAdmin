@@ -2,7 +2,9 @@ using CoreAdmin.DataContract.DbMap;
 
 namespace CoreAdmin.DataContract.Dto.Sys.User;
 
-/// <inheritdoc />
+/// <summary>
+///     请求：查询用户
+/// </summary>
 public record QueryUsersReq : TbSysUser
 {
     /// <inheritdoc />

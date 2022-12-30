@@ -3,7 +3,7 @@ using CoreAdmin.DataContract.DbMap;
 using CoreAdmin.DataContract.Dto.Sys.Security;
 using CoreAdmin.Infrastructure.Configuration.Options;
 using CoreAdmin.Infrastructure.Constant;
-using CoreAdmin.Infrastructure.Util;
+using CoreAdmin.Infrastructure.Utils;
 using Furion.FriendlyException;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -18,17 +18,13 @@ namespace CoreAdmin.Api.Sys.Implement;
 /// <inheritdoc cref="ISecurityApi" />
 public class SecurityApi : ApiBase<ISecurityApi>, ISecurityApi, IScoped
 {
-    private const int _CACHE_EXPIRES_CAPTCHA = 60;
-
-    private const int    _CACHE_EXPIRES_SMSCODE = 300;
-    private const string _CACHE_KEY_SMSCODE     = $"{nameof(SendSmsCode)}_{{0}}";
-
-    private const int _SEND_LIMIT_SMSCODE = 60;
-
+    private const    int               _CACHE_EXPIRES_CAPTCHA = 60;
+    private const    int               _CACHE_EXPIRES_SMSCODE = 300;
+    private const    string            _CACHE_KEY_SMSCODE     = $"{nameof(SendSmsCode)}_{{0}}";
+    private const    int               _SEND_LIMIT_SMSCODE    = 60;
     private readonly IDistributedCache _cache;
-
-    private readonly IFreeSql      _freeSql;
-    private readonly SecretOptions _secretOptions;
+    private readonly IFreeSql          _freeSql;
+    private readonly SecretOptions     _secretOptions;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="SecurityApi" /> class.
@@ -70,7 +66,7 @@ public class SecurityApi : ApiBase<ISecurityApi>, ISecurityApi, IScoped
 
     /// <inheritdoc />
     [AllowAnonymous]
-    public async Task SendSmsCode([FromServices] ISmsSender smsSender, SendSmsCodeReq req)
+    public async Task SendSmsCode([FromServices] SmsSender smsSender, SendSmsCodeReq req)
     {
         if (!await VerifyCaptcha(req.VerifyCaptchaReq)) {
             throw Oops.Oh(Enums.ErrorCodes.HumanVerification);

@@ -7,26 +7,20 @@ namespace CoreAdmin.DataContract.DbMap;
 ///     角色表
 /// </summary>
 [Table]
-public record TbSysRole : FullTable, IFieldBitSet, IFieldSort
+public record TbSysRole : DefaultEntity, IFieldBitSet, IFieldSort
 {
     /// <inheritdoc />
     public virtual long BitSet { get; set; }
 
     /// <summary>
-    ///     Gets or sets 角色描述
-    /// </summary>
-    /// <value>
     ///     角色描述
-    /// </value>
+    /// </summary>
     [JsonIgnore]
     public virtual string Remark { get; set; }
 
     /// <summary>
-    ///     Gets or sets 角色名称
-    /// </summary>
-    /// <value>
     ///     角色名称
-    /// </value>
+    /// </summary>
     public virtual string RoleName { get; set; }
 
     /// <inheritdoc />

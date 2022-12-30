@@ -2,6 +2,7 @@
 
 #pragma warning disable SA1402
 
+using CoreAdmin.DataContract;
 using CoreAdmin.DataContract.DbMap.Dependency;
 using CoreAdmin.Repository;
 using Furion.DynamicApiController;
@@ -12,7 +13,7 @@ namespace CoreAdmin.Api;
 ///     Api Controller 基类
 /// </summary>
 public abstract class ApiBase<TLogger, TTable> : ApiBase<TLogger>
-    where TTable : DataContract.DataContract, ITable, new()
+    where TTable : DataAbstraction, IEntity, new()
 {
     /// <summary>
     ///     Initializes a new instance of the <see cref="ApiBase{TLogger, TTable}" /> class.
@@ -33,11 +34,8 @@ public abstract class ApiBase<TLogger, TTable> : ApiBase<TLogger>
     }
 
     /// <summary>
-    ///     Gets 默认仓储
-    /// </summary>
-    /// <value>
     ///     默认仓储
-    /// </value>
+    /// </summary>
     protected Repository<TTable> Repository { get; }
 }
 
@@ -64,10 +62,7 @@ public abstract class ApiBase<T> : IDynamicApiController
     }
 
     /// <summary>
-    ///     Gets 日志记录器
-    /// </summary>
-    /// <value>
     ///     日志记录器
-    /// </value>
+    /// </summary>
     protected ILogger<T> Logger { get; }
 }

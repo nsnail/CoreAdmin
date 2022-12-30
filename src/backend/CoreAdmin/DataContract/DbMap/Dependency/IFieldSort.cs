@@ -6,10 +6,7 @@ namespace CoreAdmin.DataContract.DbMap.Dependency;
 public interface IFieldSort
 {
     /// <summary>
-    ///     Gets or sets 排序字段
-    /// </summary>
-    /// <value>
     ///     排序字段
-    /// </value>
+    /// </summary>
     int Sort { get; set; }
 }

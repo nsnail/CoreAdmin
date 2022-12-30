@@ -6,10 +6,7 @@ namespace CoreAdmin.Infrastructure.Configuration.Options;
 public record RedisOptions : OptionAbstraction
 {
     /// <summary>
-    ///     Gets or sets 链接字符串
-    /// </summary>
-    /// <value>
     ///     链接字符串
-    /// </value>
+    /// </summary>
     public string ConnStr { get; set; }
 }

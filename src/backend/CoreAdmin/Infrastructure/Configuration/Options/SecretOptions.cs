@@ -6,10 +6,7 @@ namespace CoreAdmin.Infrastructure.Configuration.Options;
 public record SecretOptions : OptionAbstraction
 {
     /// <summary>
-    ///     Gets or sets secretKeyA
+    ///     secretKeyA
     /// </summary>
-    /// <value>
-    ///     SecretKeyA
-    /// </value>
     public string SecretKeyA { get; set; }
 }

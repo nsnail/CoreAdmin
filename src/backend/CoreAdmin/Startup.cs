@@ -1,7 +1,7 @@
 using System.Reflection;
 using System.Text.Json;
 using CoreAdmin.Aop.Filter;
-using CoreAdmin.Infrastructure.Extension;
+using CoreAdmin.Infrastructure.Extensions;
 using Microsoft.AspNetCore.HttpOverrides;
 using NSExt.Extensions;
 using Serilog;

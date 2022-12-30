@@ -1,3 +1,4 @@
+using CoreAdmin.DataContract.Dto.Pub;
 using CoreAdmin.DataContract.Dto.Sys.Role;
 
 namespace CoreAdmin.Api.Sys;
@@ -10,25 +11,25 @@ public interface IRoleApi
     /// <summary>
     ///     增加角色
     /// </summary>
-    Task Add(AddRolesReq req);
+    Task Add(AddRoleReq req);
 
     /// <summary>
     ///     批量删除
     /// </summary>
-    Task<int> BulkDel(BulkDelRolesReq req);
+    Task<int> BulkDel(BulkDelReq req);
 
     /// <summary>
     ///     删除角色
     /// </summary>
-    Task<int> Del(DelRolesReq req);
+    Task<int> Del(DelReq req);
 
     /// <summary>
     ///     角色列表
     /// </summary>
-    Task<List<QueryRolesRsp>> List();
+    Task<List<QueryRoleRsp>> List();
 
     /// <summary>
     ///     更新角色
     /// </summary>
-    Task Update(UpdateRolesReq req);
+    Task Update(UpdateRoleReq req);
 }

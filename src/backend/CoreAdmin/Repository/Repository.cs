@@ -8,7 +8,7 @@ namespace CoreAdmin.Repository;
 
 /// <inheritdoc cref="IRepository{TTable}" />
 public class Repository<TTable> : DefaultRepository<TTable, long>, IRepository<TTable>
-    where TTable : class, ITable, new()
+    where TTable : class, IEntity, new()
 {
     /// <summary>
     ///     Initializes a new instance of the <see cref="Repository{TTable}" /> class.

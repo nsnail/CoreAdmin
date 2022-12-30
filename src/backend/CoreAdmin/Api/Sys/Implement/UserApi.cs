@@ -44,14 +44,15 @@ public class UserApi : ApiBase<IUserApi, TbSysUser>, IUserApi
     /// <inheritdoc />
     [AllowAnonymous]
     [HttpPost]
-    public async Task<PagedListRsp<UserRsp>> QueryUsers(PagedListReq<QueryUsersReq> req)
+    public async Task<PagedListRsp<QueryUserRsp>> QueryUsers(PagedListReq<QueryUsersReq> req)
     {
         var ret = await Repository.GetPagedListAsync(req.DynamicFilter, req.Page, req.PageSize);
-        return new PagedListRsp<UserRsp> {
-                                             Page     = req.Page
-                                           , PageSize = req.PageSize
-                                           , Rows     = ret.List.ConvertAll(x => new UserRsp { UserName = x.UserName })
-                                           , Total    = ret.Total
-                                         };
+        return new PagedListRsp<QueryUserRsp> {
+                                                  Page     = req.Page
+                                                , PageSize = req.PageSize
+                                                , Rows = ret.List.ConvertAll(
+                                                      x => new QueryUserRsp { UserName = x.UserName })
+                                                , Total = ret.Total
+                                              };
     }
 }
