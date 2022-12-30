@@ -173,7 +173,7 @@
         <Rule Id="SA1606" Action="Warning"/>          <!-- Element documentation should have summary text -->
         <Rule Id="SA1607" Action="Warning"/>          <!-- Partial element documentation should have summary text -->
         <Rule Id="SA1608" Action="Warning"/>          <!-- Element documentation should not have default summary -->
-        <Rule Id="SA1609" Action="Warning"/>          <!-- Property documentation should have value -->
+        <Rule Id="SA1609" Action="None"/>          <!-- Property documentation should have value -->
         <Rule Id="SA1610" Action="Warning"/>          <!-- Property documentation should have value text -->
         <Rule Id="SA1611" Action="None"/>             <!-- Element parameters should be documented -->
         <Rule Id="SA1612" Action="Warning"/>          <!-- Element parameter documentation should match element parameters -->
@@ -187,7 +187,7 @@
         <Rule Id="SA1620" Action="Warning"/>          <!-- Generic type parameter documentation should match type parameters -->
         <Rule Id="SA1621" Action="Warning"/>          <!-- Generic type parameter documentation should declare parameter name -->
         <Rule Id="SA1622" Action="Warning"/>          <!-- Generic type parameter documentation should have text -->
-        <Rule Id="SA1623" Action="Warning"/>          <!-- Property summary documentation should match accessors -->
+        <Rule Id="SA1623" Action="None"/>          <!-- Property summary documentation should match accessors -->
         <Rule Id="SA1624" Action="Warning"/>          <!-- Property summary documentation should omit accessor with restricted access -->
         <Rule Id="SA1625" Action="Warning"/>          <!-- Element documentation should not be copied and pasted -->
         <Rule Id="SA1626" Action="Warning"/>          <!-- Single-line comments should not use documentation style slashes -->
